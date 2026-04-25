@@ -9,7 +9,7 @@ interface ScrollExpandMediaProps {
 }
 
 const ScrollExpandMedia = ({
-  title = 'Inteligência Financeira',
+  title = 'Conheça o seu novo assistente',
   children,
 }: ScrollExpandMediaProps) => {
   const [scrollProgress, setScrollProgress] = useState<number>(0);
@@ -187,13 +187,13 @@ const ScrollExpandMedia = ({
                 style={{ pointerEvents: mediaFullyExpanded ? 'none' : 'auto' }}
               >
                 <h2
-                  className={`text-2xl md:text-3xl lg:text-4xl font-bold transition-all duration-500 ease-out ${titleColorClass}`}
+                  className={`text-3xl md:text-5xl lg:text-6xl font-bold transition-all duration-500 ease-out ${titleColorClass}`}
                   style={{ transform: `translateX(-${textTranslateX}vw)` }}
                 >
                   {firstWord}
                 </h2>
                 <h2
-                  className={`text-2xl md:text-3xl lg:text-4xl font-bold text-center transition-all duration-500 ease-out ${titleColorClass}`}
+                  className={`text-3xl md:text-5xl lg:text-6xl font-bold text-center transition-all duration-500 ease-out ${titleColorClass}`}
                   style={{ transform: `translateX(${textTranslateX}vw)` }}
                 >
                   {restOfTitle}
