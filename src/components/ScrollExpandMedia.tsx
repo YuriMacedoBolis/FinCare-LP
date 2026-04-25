@@ -111,9 +111,9 @@ const ScrollExpandMedia = ({
   const firstWord = title ? title.split(' ')[0] : '';
   const restOfTitle = title ? title.split(' ').slice(1).join(' ') : '';
 
-  // Color interpolation: orange when inside white box, white when on orange bg
+  // Color interpolation: dark green when inside white box, white when expanded over orange
   const titleColorClass =
-    scrollProgress > 0.15 ? 'text-white' : 'text-[#FF6400]';
+    scrollProgress > 0.5 ? 'text-white' : 'text-[#064E3B]';
 
   return (
     <div
