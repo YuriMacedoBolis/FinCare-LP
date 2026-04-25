@@ -108,8 +108,8 @@ const ScrollExpandMedia = ({
   const mediaHeight = 400 + scrollProgress * (isMobileState ? 200 : 400);
   const textTranslateX = scrollProgress * (isMobileState ? 180 : 150);
 
-  const firstWord = title ? title.split(' ')[0] : '';
-  const restOfTitle = title ? title.split(' ').slice(1).join(' ') : '';
+  const firstLine = 'Conheça o seu';
+  const secondLine = 'novo assistente';
 
   // Color interpolation: dark green when inside white box, white when expanded over orange
   const titleColorClass =
@@ -190,13 +190,13 @@ const ScrollExpandMedia = ({
                   className={`text-3xl md:text-5xl lg:text-6xl font-bold transition-colors duration-700 ease-in-out ${titleColorClass}`}
                   style={{ transform: `translateX(-${textTranslateX}vw)`, transition: 'transform 0.5s ease-out, color 0.7s ease-in-out' }}
                 >
-                  {firstWord}
+                  {firstLine}
                 </h2>
                 <h2
                   className={`text-3xl md:text-5xl lg:text-6xl font-playfair-italic text-center transition-colors duration-700 ease-in-out ${titleColorClass}`}
                   style={{ transform: `translateX(${textTranslateX}vw)`, transition: 'transform 0.5s ease-out, color 0.7s ease-in-out' }}
                 >
-                  {restOfTitle}
+                  {secondLine}
                 </h2>
                 {!mediaFullyExpanded && (
                   <p
