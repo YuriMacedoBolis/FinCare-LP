@@ -1,26 +1,23 @@
 import { createFileRoute } from "@tanstack/react-router";
+import ScrollExpandMedia from "@/components/ScrollExpandMedia";
 
 export const Route = createFileRoute("/")({
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
-
 function Index() {
-  return <PlaceholderIndex />;
+  return (
+    <main>
+      <ScrollExpandMedia title="Inteligência Financeira">
+        <div className="max-w-4xl mx-auto text-center text-white">
+          <h3 className="text-3xl md:text-4xl font-bold mb-4">
+            Sua jornada financeira começa aqui
+          </h3>
+          <p className="text-lg text-white/90">
+            Continue rolando para conhecer todas as funcionalidades da FinCare Brasil.
+          </p>
+        </div>
+      </ScrollExpandMedia>
+    </main>
+  );
 }
