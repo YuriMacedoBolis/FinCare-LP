@@ -170,7 +170,7 @@ const ScrollExpandMedia = ({
                   {/* Right column */}
                   <div className="flex-1 flex items-center justify-center">
                     <img
-                      src="/porquinho_fincare.png"
+                      src="/porquinho_fincare.webp"
                       alt="Porquinho FinCare com óculos"
                       className="w-full max-w-[280px] md:max-w-[400px] h-auto object-contain drop-shadow-2xl"
                     />
