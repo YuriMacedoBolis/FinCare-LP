@@ -9,7 +9,7 @@ interface ScrollExpandMediaProps {
 }
 
 const ScrollExpandMedia = ({
-  title = 'Inteligência Financeira',
+  title = 'Conheça o seu novo assistente',
   children,
 }: ScrollExpandMediaProps) => {
   const [scrollProgress, setScrollProgress] = useState<number>(0);
