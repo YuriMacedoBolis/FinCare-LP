@@ -27,7 +27,7 @@ const ScrollExpandMedia = ({
         e.preventDefault();
       } else if (!mediaFullyExpanded) {
         e.preventDefault();
-        const scrollDelta = e.deltaY * 0.0009;
+        const scrollDelta = e.deltaY * 0.0005;
         const newProgress = Math.min(Math.max(scrollProgress + scrollDelta, 0), 1);
         setScrollProgress(newProgress);
 
@@ -129,13 +129,14 @@ const ScrollExpandMedia = ({
             <div className="flex flex-col items-center justify-center w-full h-[100dvh] relative">
               {/* Expanding white box */}
               <div
-                className="absolute z-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-none rounded-2xl bg-[#F9FAFB] overflow-hidden"
+                className="absolute z-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-[#F9FAFB] overflow-hidden"
                 style={{
                   width: `${mediaWidth}px`,
                   height: `${mediaHeight}px`,
                   maxWidth: '95vw',
                   maxHeight: '85vh',
                   boxShadow: '0px 20px 60px rgba(0, 0, 0, 0.18)',
+                  transition: 'width 0.4s cubic-bezier(0.22, 1, 0.36, 1), height 0.4s cubic-bezier(0.22, 1, 0.36, 1)',
                 }}
               >
                 {/* Expanded content (2-column layout) */}
@@ -186,13 +187,13 @@ const ScrollExpandMedia = ({
                 style={{ pointerEvents: mediaFullyExpanded ? 'none' : 'auto' }}
               >
                 <h2
-                  className={`text-4xl md:text-5xl lg:text-7xl font-bold transition-colors duration-300 ${titleColorClass}`}
+                  className={`text-2xl md:text-3xl lg:text-4xl font-bold transition-all duration-500 ease-out ${titleColorClass}`}
                   style={{ transform: `translateX(-${textTranslateX}vw)` }}
                 >
                   {firstWord}
                 </h2>
                 <h2
-                  className={`text-4xl md:text-5xl lg:text-7xl font-bold text-center transition-colors duration-300 ${titleColorClass}`}
+                  className={`text-2xl md:text-3xl lg:text-4xl font-bold text-center transition-all duration-500 ease-out ${titleColorClass}`}
                   style={{ transform: `translateX(${textTranslateX}vw)` }}
                 >
                   {restOfTitle}
