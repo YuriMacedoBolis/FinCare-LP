@@ -108,8 +108,8 @@ const ScrollExpandMedia = ({
   const mediaHeight = 400 + scrollProgress * (isMobileState ? 200 : 400);
   const textTranslateX = scrollProgress * (isMobileState ? 180 : 150);
 
-  const firstWord = title ? title.split(' ')[0] : '';
-  const restOfTitle = title ? title.split(' ').slice(1).join(' ') : '';
+  const firstLine = 'Conheça o seu';
+  const secondLine = 'novo assistente';
 
   // Color interpolation: dark green when inside white box, white when expanded over orange
   const titleColorClass =
