@@ -111,9 +111,9 @@ const ScrollExpandMedia = ({
   const firstWord = title ? title.split(' ')[0] : '';
   const restOfTitle = title ? title.split(' ').slice(1).join(' ') : '';
 
-  // Color interpolation: orange when inside white box, white when on orange bg
+  // Color interpolation: dark green when inside white box, white when expanded over orange
   const titleColorClass =
-    scrollProgress > 0.15 ? 'text-white' : 'text-[#FF6400]';
+    scrollProgress > 0.5 ? 'text-white' : 'text-[#064E3B]';
 
   return (
     <div
@@ -187,21 +187,21 @@ const ScrollExpandMedia = ({
                 style={{ pointerEvents: mediaFullyExpanded ? 'none' : 'auto' }}
               >
                 <h2
-                  className={`text-3xl md:text-5xl lg:text-6xl font-bold transition-all duration-500 ease-out ${titleColorClass}`}
-                  style={{ transform: `translateX(-${textTranslateX}vw)` }}
+                  className={`text-3xl md:text-5xl lg:text-6xl font-bold transition-colors duration-700 ease-in-out ${titleColorClass}`}
+                  style={{ transform: `translateX(-${textTranslateX}vw)`, transition: 'transform 0.5s ease-out, color 0.7s ease-in-out' }}
                 >
                   {firstWord}
                 </h2>
                 <h2
-                  className={`text-3xl md:text-5xl lg:text-6xl font-bold text-center transition-all duration-500 ease-out ${titleColorClass}`}
-                  style={{ transform: `translateX(${textTranslateX}vw)` }}
+                  className={`text-3xl md:text-5xl lg:text-6xl font-playfair-italic text-center transition-colors duration-700 ease-in-out ${titleColorClass}`}
+                  style={{ transform: `translateX(${textTranslateX}vw)`, transition: 'transform 0.5s ease-out, color 0.7s ease-in-out' }}
                 >
                   {restOfTitle}
                 </h2>
                 {!mediaFullyExpanded && (
                   <p
                     className={`mt-6 text-sm md:text-base font-medium tracking-wide uppercase transition-colors duration-300 ${
-                      scrollProgress > 0.15 ? 'text-white/80' : 'text-[#FF6400]/70'
+                      scrollProgress > 0.5 ? 'text-white/80' : 'text-[#064E3B]/70'
                     }`}
                   >
                     Role para descobrir
