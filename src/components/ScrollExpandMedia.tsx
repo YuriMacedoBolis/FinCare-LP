@@ -201,7 +201,7 @@ const ScrollExpandMedia = ({
                 {!mediaFullyExpanded && (
                   <p
                     className={`mt-6 text-sm md:text-base font-medium tracking-wide uppercase transition-colors duration-300 ${
-                      scrollProgress > 0.15 ? 'text-white/80' : 'text-[#FF6400]/70'
+                      scrollProgress > 0.5 ? 'text-white/80' : 'text-[#064E3B]/70'
                     }`}
                   >
                     Role para descobrir
