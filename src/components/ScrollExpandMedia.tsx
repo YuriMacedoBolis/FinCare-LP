@@ -27,14 +27,16 @@ const ScrollExpandMedia = ({
         e.preventDefault();
       } else if (!mediaFullyExpanded) {
         e.preventDefault();
-        const scrollDelta = e.deltaY * 0.0005;
+        // Softer scroll: smaller delta + unpin earlier (at 0.55 instead of 1.0)
+        // to cut "dead time" after WOW content is fully revealed.
+        const scrollDelta = e.deltaY * 0.00035;
         const newProgress = Math.min(Math.max(scrollProgress + scrollDelta, 0), 1);
         setScrollProgress(newProgress);
 
-        if (newProgress >= 1) {
+        if (newProgress >= 0.55) {
           setMediaFullyExpanded(true);
           setShowContent(true);
-        } else if (newProgress < 0.75) {
+        } else if (newProgress < 0.4) {
           setShowContent(false);
         }
       }
@@ -54,15 +56,15 @@ const ScrollExpandMedia = ({
         e.preventDefault();
       } else if (!mediaFullyExpanded) {
         e.preventDefault();
-        const scrollFactor = deltaY < 0 ? 0.008 : 0.005;
+        const scrollFactor = deltaY < 0 ? 0.0055 : 0.0035;
         const scrollDelta = deltaY * scrollFactor;
         const newProgress = Math.min(Math.max(scrollProgress + scrollDelta, 0), 1);
         setScrollProgress(newProgress);
 
-        if (newProgress >= 1) {
+        if (newProgress >= 0.55) {
           setMediaFullyExpanded(true);
           setShowContent(true);
-        } else if (newProgress < 0.75) {
+        } else if (newProgress < 0.4) {
           setShowContent(false);
         }
 
@@ -111,8 +113,8 @@ const ScrollExpandMedia = ({
   // Initial title fades 0.30 -> 0.35
   const titleFadeProgress = clamp((scrollProgress - 0.3) / 0.05); // 0 -> 1
   const titleOpacity = 1 - titleFadeProgress;
-  // WOW content fades in 0.35 -> 0.45
-  const wowProgress = clamp((scrollProgress - 0.35) / 0.1); // 0 -> 1
+  // WOW content fades in more gradually: 0.35 -> 0.55
+  const wowProgress = clamp((scrollProgress - 0.35) / 0.2); // 0 -> 1
 
   const mediaWidth = 300 + expandProgress * (isMobileState ? 650 : 1250);
   const mediaHeight = 400 + expandProgress * (isMobileState ? 200 : 400);
@@ -146,7 +148,7 @@ const ScrollExpandMedia = ({
                   maxWidth: '95vw',
                   maxHeight: '85vh',
                   boxShadow: '0px 20px 60px rgba(0, 0, 0, 0.18)',
-                  transition: 'width 0.4s cubic-bezier(0.22, 1, 0.36, 1), height 0.4s cubic-bezier(0.22, 1, 0.36, 1)',
+                  transition: 'width 0.7s cubic-bezier(0.22, 1, 0.36, 1), height 0.7s cubic-bezier(0.22, 1, 0.36, 1)',
                 }}
               >
                 {/* Expanded content (2-column layout) — driven by wowProgress (0.35 -> 0.45) */}
@@ -155,6 +157,7 @@ const ScrollExpandMedia = ({
                   style={{
                     opacity: wowProgress,
                     transform: `translateY(${(1 - wowProgress) * 50}px)`,
+                    transition: 'opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)',
                     pointerEvents: wowProgress > 0.9 ? 'auto' : 'none',
                   }}
                 >
@@ -192,22 +195,23 @@ const ScrollExpandMedia = ({
 
               {/* Split title — fades out 0.30 -> 0.35 */}
               <motion.div
-                className="flex items-center justify-center text-center gap-4 w-full relative z-10 transition-none flex-col"
+                className="flex items-center justify-center text-center gap-4 w-full relative z-10 flex-col"
                 style={{
                   opacity: titleOpacity,
                   transform: `translateY(${-titleFadeProgress * 50}px)`,
+                  transition: 'opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)',
                   pointerEvents: titleOpacity < 0.05 ? 'none' : 'auto',
                 }}
               >
                 <h2
-                  className={`text-3xl md:text-5xl lg:text-6xl font-bold transition-colors duration-700 ease-in-out ${titleColorClass}`}
-                  style={{ transform: `translateX(-${textTranslateX}vw)`, transition: 'transform 0.5s ease-out, color 0.7s ease-in-out' }}
+                  className={`text-3xl md:text-5xl lg:text-6xl font-bold ${titleColorClass}`}
+                  style={{ transform: `translateX(-${textTranslateX}vw)`, transition: 'transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), color 0.7s ease-in-out' }}
                 >
                   {firstLine}
                 </h2>
                 <h2
-                  className={`text-3xl md:text-5xl lg:text-6xl font-playfair-italic text-center transition-colors duration-700 ease-in-out ${titleColorClass}`}
-                  style={{ transform: `translateX(${textTranslateX}vw)`, transition: 'transform 0.5s ease-out, color 0.7s ease-in-out' }}
+                  className={`text-3xl md:text-5xl lg:text-6xl font-playfair-italic text-center ${titleColorClass}`}
+                  style={{ transform: `translateX(${textTranslateX}vw)`, transition: 'transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), color 0.7s ease-in-out' }}
                 >
                   {secondLine}
                 </h2>
