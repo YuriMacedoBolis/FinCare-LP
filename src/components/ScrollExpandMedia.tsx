@@ -104,16 +104,26 @@ const ScrollExpandMedia = ({
     return () => window.removeEventListener('resize', checkIfMobile);
   }, []);
 
-  const mediaWidth = 300 + scrollProgress * (isMobileState ? 650 : 1250);
-  const mediaHeight = 400 + scrollProgress * (isMobileState ? 200 : 400);
-  const textTranslateX = scrollProgress * (isMobileState ? 180 : 150);
+  // Remap progress so the mask/box finishes expanding at 0.35 of total scroll,
+  // then stays static through 1.0 to give the user time to read the WOW content.
+  const clamp = (v: number) => Math.min(Math.max(v, 0), 1);
+  const expandProgress = clamp(scrollProgress / 0.35); // 0 -> 1 across [0, 0.35]
+  // Initial title fades 0.30 -> 0.35
+  const titleFadeProgress = clamp((scrollProgress - 0.3) / 0.05); // 0 -> 1
+  const titleOpacity = 1 - titleFadeProgress;
+  // WOW content fades in 0.35 -> 0.45
+  const wowProgress = clamp((scrollProgress - 0.35) / 0.1); // 0 -> 1
+
+  const mediaWidth = 300 + expandProgress * (isMobileState ? 650 : 1250);
+  const mediaHeight = 400 + expandProgress * (isMobileState ? 200 : 400);
+  const textTranslateX = expandProgress * (isMobileState ? 180 : 150);
 
   const firstLine = 'Conheça o seu';
   const secondLine = 'novo assistente';
 
-  // Color interpolation: dark green when inside white box, white when expanded over orange
+  // Color interpolation: dark green when inside white box, white once box has expanded past midpoint
   const titleColorClass =
-    scrollProgress > 0.5 ? 'text-white' : 'text-[#064E3B]';
+    expandProgress > 0.5 ? 'text-white' : 'text-[#064E3B]';
 
   return (
     <div
@@ -139,13 +149,14 @@ const ScrollExpandMedia = ({
                   transition: 'width 0.4s cubic-bezier(0.22, 1, 0.36, 1), height 0.4s cubic-bezier(0.22, 1, 0.36, 1)',
                 }}
               >
-                {/* Expanded content (2-column layout) */}
+                {/* Expanded content (2-column layout) — driven by wowProgress (0.35 -> 0.45) */}
                 <motion.div
                   className="absolute inset-0 flex flex-col md:flex-row items-center justify-center gap-8 p-6 md:p-12 lg:p-16"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: mediaFullyExpanded ? 1 : 0 }}
-                  transition={{ duration: 0.6, delay: mediaFullyExpanded ? 0.2 : 0 }}
-                  style={{ pointerEvents: mediaFullyExpanded ? 'auto' : 'none' }}
+                  style={{
+                    opacity: wowProgress,
+                    transform: `translateY(${(1 - wowProgress) * 50}px)`,
+                    pointerEvents: wowProgress > 0.9 ? 'auto' : 'none',
+                  }}
                 >
                   {/* Left column */}
                   <div className="flex-1 flex flex-col gap-5 text-left max-w-xl">
@@ -179,12 +190,14 @@ const ScrollExpandMedia = ({
                 </motion.div>
               </div>
 
-              {/* Split title */}
+              {/* Split title — fades out 0.30 -> 0.35 */}
               <motion.div
                 className="flex items-center justify-center text-center gap-4 w-full relative z-10 transition-none flex-col"
-                animate={{ opacity: mediaFullyExpanded ? 0 : 1 }}
-                transition={{ duration: 0.4 }}
-                style={{ pointerEvents: mediaFullyExpanded ? 'none' : 'auto' }}
+                style={{
+                  opacity: titleOpacity,
+                  transform: `translateY(${-titleFadeProgress * 50}px)`,
+                  pointerEvents: titleOpacity < 0.05 ? 'none' : 'auto',
+                }}
               >
                 <h2
                   className={`text-3xl md:text-5xl lg:text-6xl font-bold transition-colors duration-700 ease-in-out ${titleColorClass}`}
@@ -198,10 +211,10 @@ const ScrollExpandMedia = ({
                 >
                   {secondLine}
                 </h2>
-                {!mediaFullyExpanded && (
+                {titleOpacity > 0.05 && (
                   <p
                     className={`mt-6 text-sm md:text-base font-medium tracking-wide uppercase transition-colors duration-300 ${
-                      scrollProgress > 0.5 ? 'text-white/80' : 'text-[#064E3B]/70'
+                      expandProgress > 0.5 ? 'text-white/80' : 'text-[#064E3B]/70'
                     }`}
                   >
                     Role para descobrir
