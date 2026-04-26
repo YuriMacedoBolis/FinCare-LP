@@ -148,7 +148,7 @@ const ScrollExpandMedia = ({
                   maxWidth: '95vw',
                   maxHeight: '85vh',
                   boxShadow: '0px 20px 60px rgba(0, 0, 0, 0.18)',
-                  transition: 'width 0.4s cubic-bezier(0.22, 1, 0.36, 1), height 0.4s cubic-bezier(0.22, 1, 0.36, 1)',
+                  transition: 'width 0.7s cubic-bezier(0.22, 1, 0.36, 1), height 0.7s cubic-bezier(0.22, 1, 0.36, 1)',
                 }}
               >
                 {/* Expanded content (2-column layout) — driven by wowProgress (0.35 -> 0.45) */}
@@ -157,6 +157,7 @@ const ScrollExpandMedia = ({
                   style={{
                     opacity: wowProgress,
                     transform: `translateY(${(1 - wowProgress) * 50}px)`,
+                    transition: 'opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)',
                     pointerEvents: wowProgress > 0.9 ? 'auto' : 'none',
                   }}
                 >
@@ -194,22 +195,23 @@ const ScrollExpandMedia = ({
 
               {/* Split title — fades out 0.30 -> 0.35 */}
               <motion.div
-                className="flex items-center justify-center text-center gap-4 w-full relative z-10 transition-none flex-col"
+                className="flex items-center justify-center text-center gap-4 w-full relative z-10 flex-col"
                 style={{
                   opacity: titleOpacity,
                   transform: `translateY(${-titleFadeProgress * 50}px)`,
+                  transition: 'opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)',
                   pointerEvents: titleOpacity < 0.05 ? 'none' : 'auto',
                 }}
               >
                 <h2
-                  className={`text-3xl md:text-5xl lg:text-6xl font-bold transition-colors duration-700 ease-in-out ${titleColorClass}`}
-                  style={{ transform: `translateX(-${textTranslateX}vw)`, transition: 'transform 0.5s ease-out, color 0.7s ease-in-out' }}
+                  className={`text-3xl md:text-5xl lg:text-6xl font-bold ${titleColorClass}`}
+                  style={{ transform: `translateX(-${textTranslateX}vw)`, transition: 'transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), color 0.7s ease-in-out' }}
                 >
                   {firstLine}
                 </h2>
                 <h2
-                  className={`text-3xl md:text-5xl lg:text-6xl font-playfair-italic text-center transition-colors duration-700 ease-in-out ${titleColorClass}`}
-                  style={{ transform: `translateX(${textTranslateX}vw)`, transition: 'transform 0.5s ease-out, color 0.7s ease-in-out' }}
+                  className={`text-3xl md:text-5xl lg:text-6xl font-playfair-italic text-center ${titleColorClass}`}
+                  style={{ transform: `translateX(${textTranslateX}vw)`, transition: 'transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), color 0.7s ease-in-out' }}
                 >
                   {secondLine}
                 </h2>
