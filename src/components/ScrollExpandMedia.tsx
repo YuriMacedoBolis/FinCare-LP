@@ -190,12 +190,14 @@ const ScrollExpandMedia = ({
                 </motion.div>
               </div>
 
-              {/* Split title */}
+              {/* Split title — fades out 0.30 -> 0.35 */}
               <motion.div
                 className="flex items-center justify-center text-center gap-4 w-full relative z-10 transition-none flex-col"
-                animate={{ opacity: mediaFullyExpanded ? 0 : 1 }}
-                transition={{ duration: 0.4 }}
-                style={{ pointerEvents: mediaFullyExpanded ? 'none' : 'auto' }}
+                style={{
+                  opacity: titleOpacity,
+                  transform: `translateY(${-titleFadeProgress * 50}px)`,
+                  pointerEvents: titleOpacity < 0.05 ? 'none' : 'auto',
+                }}
               >
                 <h2
                   className={`text-3xl md:text-5xl lg:text-6xl font-bold transition-colors duration-700 ease-in-out ${titleColorClass}`}
@@ -209,10 +211,10 @@ const ScrollExpandMedia = ({
                 >
                   {secondLine}
                 </h2>
-                {!mediaFullyExpanded && (
+                {titleOpacity > 0.05 && (
                   <p
                     className={`mt-6 text-sm md:text-base font-medium tracking-wide uppercase transition-colors duration-300 ${
-                      scrollProgress > 0.5 ? 'text-white/80' : 'text-[#064E3B]/70'
+                      expandProgress > 0.5 ? 'text-white/80' : 'text-[#064E3B]/70'
                     }`}
                   >
                     Role para descobrir
