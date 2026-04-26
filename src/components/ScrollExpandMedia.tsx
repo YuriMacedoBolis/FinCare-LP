@@ -104,9 +104,19 @@ const ScrollExpandMedia = ({
     return () => window.removeEventListener('resize', checkIfMobile);
   }, []);
 
-  const mediaWidth = 300 + scrollProgress * (isMobileState ? 650 : 1250);
-  const mediaHeight = 400 + scrollProgress * (isMobileState ? 200 : 400);
-  const textTranslateX = scrollProgress * (isMobileState ? 180 : 150);
+  // Remap progress so the mask/box finishes expanding at 0.35 of total scroll,
+  // then stays static through 1.0 to give the user time to read the WOW content.
+  const clamp = (v: number) => Math.min(Math.max(v, 0), 1);
+  const expandProgress = clamp(scrollProgress / 0.35); // 0 -> 1 across [0, 0.35]
+  // Initial title fades 0.30 -> 0.35
+  const titleFadeProgress = clamp((scrollProgress - 0.3) / 0.05); // 0 -> 1
+  const titleOpacity = 1 - titleFadeProgress;
+  // WOW content fades in 0.35 -> 0.45
+  const wowProgress = clamp((scrollProgress - 0.35) / 0.1); // 0 -> 1
+
+  const mediaWidth = 300 + expandProgress * (isMobileState ? 650 : 1250);
+  const mediaHeight = 400 + expandProgress * (isMobileState ? 200 : 400);
+  const textTranslateX = expandProgress * (isMobileState ? 180 : 150);
 
   const firstLine = 'Conheça o seu';
   const secondLine = 'novo assistente';
