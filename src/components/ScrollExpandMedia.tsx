@@ -149,13 +149,14 @@ const ScrollExpandMedia = ({
                   transition: 'width 0.4s cubic-bezier(0.22, 1, 0.36, 1), height 0.4s cubic-bezier(0.22, 1, 0.36, 1)',
                 }}
               >
-                {/* Expanded content (2-column layout) */}
+                {/* Expanded content (2-column layout) — driven by wowProgress (0.35 -> 0.45) */}
                 <motion.div
                   className="absolute inset-0 flex flex-col md:flex-row items-center justify-center gap-8 p-6 md:p-12 lg:p-16"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: mediaFullyExpanded ? 1 : 0 }}
-                  transition={{ duration: 0.6, delay: mediaFullyExpanded ? 0.2 : 0 }}
-                  style={{ pointerEvents: mediaFullyExpanded ? 'auto' : 'none' }}
+                  style={{
+                    opacity: wowProgress,
+                    transform: `translateY(${(1 - wowProgress) * 50}px)`,
+                    pointerEvents: wowProgress > 0.9 ? 'auto' : 'none',
+                  }}
                 >
                   {/* Left column */}
                   <div className="flex-1 flex flex-col gap-5 text-left max-w-xl">
