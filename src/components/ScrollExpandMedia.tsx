@@ -121,9 +121,9 @@ const ScrollExpandMedia = ({
   const firstLine = 'Conheça o seu';
   const secondLine = 'novo assistente';
 
-  // Color interpolation: dark green when inside white box, white when expanded over orange
+  // Color interpolation: dark green when inside white box, white once box has expanded past midpoint
   const titleColorClass =
-    scrollProgress > 0.5 ? 'text-white' : 'text-[#064E3B]';
+    expandProgress > 0.5 ? 'text-white' : 'text-[#064E3B]';
 
   return (
     <div
