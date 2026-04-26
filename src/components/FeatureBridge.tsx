@@ -9,28 +9,31 @@ import {
 interface TiltCardProps {
   children: React.ReactNode;
   delay?: number;
+  className?: string;
+  centered?: boolean;
 }
 
-const TiltCard: React.FC<TiltCardProps> = ({ children, delay = 0 }) => {
+const TiltCard: React.FC<TiltCardProps> = ({
+  children,
+  delay = 0,
+  className = "",
+  centered = false,
+}) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
   const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 });
   const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 });
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["7deg", "-7deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-7deg", "7deg"]);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["6deg", "-6deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-6deg", "6deg"]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
-    const xPct = mouseX / width - 0.5;
-    const yPct = mouseY / height - 0.5;
-    x.set(xPct);
-    y.set(yPct);
+    x.set(mouseX / rect.width - 0.5);
+    y.set(mouseY / rect.height - 0.5);
   };
 
   const handleMouseLeave = () => {
@@ -50,49 +53,62 @@ const TiltCard: React.FC<TiltCardProps> = ({ children, delay = 0 }) => {
         rotateX,
         rotateY,
         transformStyle: "preserve-3d",
+        backgroundImage: "linear-gradient(160deg, #FFFFFF 0%, #F8FAFC 100%)",
+        boxShadow:
+          "0 40px 80px -20px rgba(15, 23, 42, 0.15), 0 20px 40px -20px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(15, 23, 42, 0.04)",
       }}
-      className="bg-white rounded-3xl p-10 md:p-12 shadow-2xl relative will-change-transform"
+      className={`group rounded-3xl p-12 md:p-16 relative will-change-transform border border-slate-100 ${className}`}
     >
-      <div style={{ transform: "translateZ(30px)" }}>{children}</div>
+      <div
+        style={{ transform: "translateZ(40px)" }}
+        className={centered ? "flex flex-col items-center text-center" : ""}
+      >
+        {children}
+      </div>
     </motion.div>
   );
 };
 
+const iconWrapperBase =
+  "w-16 h-16 rounded-2xl flex items-center justify-center mb-8 transition-transform duration-500 ease-out group-hover:-rotate-[5deg] group-hover:scale-105";
+
 const FeatureBridge: React.FC = () => {
   return (
     <section
-      className="bg-[#FF6400] py-32 px-6 flex justify-center overflow-hidden"
+      className="bg-white rounded-t-[3rem] md:rounded-t-[5rem] -mt-12 md:-mt-24 pt-24 md:pt-32 pb-20 px-6 z-10 relative"
       style={{ perspective: "1200px" }}
     >
-      <div className="w-full max-w-5xl flex flex-col items-center">
+      <div className="w-full max-w-5xl mx-auto flex flex-col items-center">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, margin: "-50px" }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center"
+          className="text-center max-w-3xl"
         >
-          <h2 className="text-white text-5xl md:text-6xl font-extrabold tracking-tight font-sans leading-[1.05]">
+          <h2 className="text-slate-900 text-5xl md:text-6xl font-extrabold tracking-tight font-sans leading-[1.05]">
             Deixe o trabalho pesado com a IA.
           </h2>
           <h2
-            className="text-6xl md:text-7xl font-bold italic font-playfair-italic leading-[1.05] mt-2"
-            style={{ color: "#064E3B" }}
+            className="text-5xl md:text-6xl font-medium italic font-playfair-italic leading-[1.1] mt-3"
+            style={{ color: "#FF6400", fontFamily: "'Playfair Display', serif" }}
           >
             Foque nos seus sonhos.
           </h2>
-          <p className="text-white/90 max-w-2xl mx-auto mt-6 text-lg">
+          <p className="text-slate-500 max-w-2xl mx-auto mt-8 text-lg leading-relaxed">
             A FinCare Brasil elimina a fricção da organização financeira para
             que tenha tempo e clareza para construir o seu patrimônio.
           </p>
         </motion.div>
 
         <div
-          className="grid md:grid-cols-2 gap-10 mt-20 max-w-5xl w-full"
+          className="grid md:grid-cols-2 gap-10 mt-20 max-w-5xl w-full mx-auto"
           style={{ perspective: "1200px" }}
         >
           <TiltCard delay={0.15}>
-            <div className="w-16 h-16 rounded-2xl bg-[#fff7ed] text-[#FF6400] flex items-center justify-center mb-8">
+            <div
+              className={`${iconWrapperBase} bg-[#fff7ed] text-[#FF6400]`}
+            >
               <svg
                 width="32"
                 height="32"
@@ -113,17 +129,50 @@ const FeatureBridge: React.FC = () => {
                 ></path>
               </svg>
             </div>
-            <h3 className="text-2xl font-extrabold text-slate-900 mb-4">
+            <h3 className="text-2xl font-extrabold text-slate-900 mb-4 tracking-tight">
               Chega de planilhas.
             </h3>
-            <p className="text-slate-600 leading-relaxed">
+            <p className="text-slate-500 leading-relaxed text-base">
               Você não é o contador da sua própria vida. A nossa Inteligência
               Artificial lê, categoriza e organiza cada centavo automaticamente.
             </p>
           </TiltCard>
 
           <TiltCard delay={0.3}>
-            <div className="w-16 h-16 rounded-2xl bg-[#ecfdf5] text-[#064E3B] flex items-center justify-center mb-8">
+            <div
+              className={`${iconWrapperBase} bg-[#ecfdf5] text-[#064E3B]`}
+            >
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                <circle cx="12" cy="12" r="4"></circle>
+              </svg>
+            </div>
+            <h3 className="text-2xl font-extrabold text-slate-900 mb-4 tracking-tight">
+              Clareza instantânea.
+            </h3>
+            <p className="text-slate-500 leading-relaxed text-base">
+              Visualize seu patrimônio em tempo real, com insights gerados pela
+              IA que transformam dados em decisões inteligentes.
+            </p>
+          </TiltCard>
+
+          <TiltCard
+            delay={0.45}
+            centered
+            className="md:col-span-2 md:w-2/3 md:mx-auto"
+          >
+            <div
+              className={`${iconWrapperBase} bg-[#ecfdf5] text-[#064E3B]`}
+            >
               <svg
                 width="32"
                 height="32"
@@ -140,10 +189,10 @@ const FeatureBridge: React.FC = () => {
                 <path d="M22 2l-8 8" stroke="#064E3B" strokeWidth="2"></path>
               </svg>
             </div>
-            <h3 className="text-2xl font-extrabold text-slate-900 mb-4">
+            <h3 className="text-2xl font-extrabold text-slate-900 mb-4 tracking-tight">
               A evolução do cofrinho.
             </h3>
-            <p className="text-slate-600 leading-relaxed">
+            <p className="text-slate-500 leading-relaxed text-base max-w-md">
               Dinheiro poupado sem propósito perde valor. Defina metas
               inteligentes — desde uma viagem de fim de ano até a sua reserva
               de emergência.
