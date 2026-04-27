@@ -105,6 +105,12 @@ const cardData: CardData[] = [
   },
 ];
 
+type SwiperWithLoopedSlidesProps = React.ComponentProps<typeof Swiper> & {
+  loopedSlides?: number;
+};
+
+const SwiperWithLoopedSlides = Swiper as React.ComponentType<SwiperWithLoopedSlidesProps>;
+
 const TechCarousel: React.FC = () => {
   // Duplicate slides to make loop robust with few items + slidesPerView:'auto'
   const carouselData = [...cardData, ...cardData];
@@ -175,7 +181,7 @@ const TechCarousel: React.FC = () => {
       </div>
 
       <div className="tech-carousel">
-        <Swiper
+        <SwiperWithLoopedSlides
           modules={[EffectCoverflow, Pagination, Autoplay]}
           effect={"coverflow"}
           grabCursor
@@ -203,7 +209,7 @@ const TechCarousel: React.FC = () => {
               </div>
             </SwiperSlide>
           ))}
-        </Swiper>
+        </SwiperWithLoopedSlides>
       </div>
     </section>
   );
