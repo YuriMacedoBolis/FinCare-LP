@@ -14,7 +14,7 @@ function Index() {
       <ScrollExpandMedia title="Conheça o seu novo assistente" />
       <FeatureBridge />
       <MagneticShowcase />
-      <TechEngine />
+      <TechCarousel />
     </main>
   );
 }
