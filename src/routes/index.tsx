@@ -6,6 +6,7 @@ import TechCarousel from "@/components/TechCarousel";
 import AgentTestSection from "@/components/AgentTestSection";
 import PricingSection from "@/components/PricingSection";
 import Footer from "@/components/Footer";
+import SmartNavbar from "@/components/SmartNavbar";
 
 export const Route = createFileRoute("/")({
   component: Index,
