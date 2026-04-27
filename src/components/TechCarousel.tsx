@@ -136,7 +136,7 @@ const TechCarousel: React.FC = () => {
           filter: blur(0px) !important;
         }
         .tech-carousel .tilt-perspective {
-          perspective: 2000px;
+          perspective: 1200px;
         }
         .tech-carousel .swiper-pagination {
           margin-top: 24px;
