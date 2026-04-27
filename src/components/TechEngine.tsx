@@ -45,9 +45,9 @@ const TiltCard: React.FC<TiltCardProps> = ({ title, icon, description }) => {
         transformStyle: "preserve-3d",
         backgroundColor: "#064E3B",
       }}
-      className="border border-white/10 p-10 rounded-3xl shadow-2xl hover:shadow-3xl transition-shadow duration-300 will-change-transform"
+      className="h-full flex flex-col border border-white/10 p-10 rounded-3xl shadow-2xl hover:shadow-3xl transition-shadow duration-300 will-change-transform"
     >
-      <div style={{ transform: "translateZ(40px)" }}>
+      <div style={{ transform: "translateZ(40px)" }} className="flex-1">
         <div className="mb-6">{icon}</div>
         <h3 className="text-2xl font-extrabold text-white mb-4">{title}</h3>
         <p className="text-[#a7f3d0] leading-relaxed text-lg">{description}</p>
@@ -165,11 +165,12 @@ const TechEngine: React.FC = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-20 max-w-5xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-20 max-w-5xl mx-auto items-stretch"
         >
           {cards.map((card) => (
             <motion.div
               key={card.title}
+              className="h-full"
               variants={{
                 hidden: { opacity: 0, y: 50 },
                 show: {
