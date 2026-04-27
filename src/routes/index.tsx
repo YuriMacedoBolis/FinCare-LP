@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import ScrollExpandMedia from "@/components/ScrollExpandMedia";
 import FeatureBridge from "@/components/FeatureBridge";
 import MagneticShowcase from "@/components/MagneticShowcase";
-import TechEngine from "@/components/TechEngine";
+import TechCarousel from "@/components/TechCarousel";
 
 export const Route = createFileRoute("/")({
   component: Index,
