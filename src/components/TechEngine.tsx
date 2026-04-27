@@ -132,8 +132,8 @@ const cards: TiltCardProps[] = [
 const TechEngine: React.FC = () => {
   return (
     <section
-      className="relative z-30 bg-[#FF6400] rounded-t-[3rem] md:rounded-t-[5rem] -mt-12 md:-mt-24 pt-32 pb-32 px-6"
-      style={{ perspective: "1200px" }}
+      className="relative z-10 bg-[#FF6400] pt-32 pb-32 px-6"
+      style={{ perspective: "2500px" }}
     >
       <div className="max-w-7xl mx-auto">
         <motion.div
