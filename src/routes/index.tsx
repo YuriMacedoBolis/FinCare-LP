@@ -15,6 +15,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <main>
+      <SmartNavbar />
       <ScrollExpandMedia title="Conheça o seu novo assistente" />
       <FeatureBridge />
       <MagneticShowcase />
