@@ -4,6 +4,7 @@ import FeatureBridge from "@/components/FeatureBridge";
 import MagneticShowcase from "@/components/MagneticShowcase";
 import TechCarousel from "@/components/TechCarousel";
 import PricingSection from "@/components/PricingSection";
+import Footer from "@/components/Footer";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -17,6 +18,7 @@ function Index() {
       <MagneticShowcase />
       <TechCarousel />
       <PricingSection />
+      <Footer />
     </main>
   );
 }
