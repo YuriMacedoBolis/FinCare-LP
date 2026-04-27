@@ -183,7 +183,8 @@ const TechCarousel: React.FC = () => {
           slidesPerView={"auto"}
           loop
           loopAdditionalSlides={2}
-          autoplay={{ delay: 3500, disableOnInteraction: false }}
+          autoplay={{ delay: 6000, disableOnInteraction: false }}
+          speed={1200}
           coverflowEffect={{
             rotate: 0,
             stretch: -80,
