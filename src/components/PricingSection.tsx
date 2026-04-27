@@ -24,7 +24,7 @@ const features = [
 
 export default function PricingSection() {
   return (
-    <section className="relative bg-[#064E3B] py-32 px-6 flex flex-col items-center overflow-hidden">
+    <section className="relative z-40 bg-[#064E3B] rounded-t-[3rem] md:rounded-t-[5rem] -mt-12 md:-mt-16 pt-32 md:pt-40 pb-32 px-6 flex flex-col items-center overflow-hidden">
       <motion.div
         variants={containerVariants}
         initial="hidden"
