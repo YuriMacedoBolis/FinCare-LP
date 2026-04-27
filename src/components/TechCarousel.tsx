@@ -107,29 +107,41 @@ const cards: CardData[] = [
 ];
 
 const TechCarousel: React.FC = () => {
+  // Duplicate slides to make loop robust with few items + slidesPerView:'auto'
+  const loopCards = [...cards, ...cards];
+
   return (
     <section
       className="relative z-30 bg-[#FF6400] rounded-t-[3rem] md:rounded-t-[5rem] -mt-12 md:-mt-24 pt-32 pb-32 overflow-hidden"
-      style={{ perspective: "2500px" }}
     >
       <style>{`
+        .tech-carousel,
         .tech-carousel .swiper,
         .tech-carousel .swiper-wrapper,
         .tech-carousel .swiper-slide {
           background: transparent !important;
         }
         .tech-carousel .swiper {
-          padding: 40px 0 60px;
+          padding: 60px 0 80px;
           overflow: visible;
         }
         .tech-carousel .swiper-slide {
           width: 380px;
           max-width: 85vw;
-          transition: opacity 0.3s ease;
-          opacity: 0.2;
+          opacity: 0.15;
+          filter: blur(2.5px);
+          transition: opacity 0.4s ease, filter 0.4s ease;
         }
         .tech-carousel .swiper-slide-active {
-          opacity: 1;
+          opacity: 1 !important;
+          filter: blur(0px) !important;
+        }
+        .tech-carousel .tilt-perspective {
+          perspective: 2000px;
+        }
+        .tech-carousel .swiper-pagination {
+          margin-top: 24px;
+          position: relative;
         }
         .tech-carousel .swiper-pagination-bullet {
           background: #ffffff;
@@ -171,20 +183,23 @@ const TechCarousel: React.FC = () => {
           centeredSlides
           slidesPerView={"auto"}
           loop
+          loopAdditionalSlides={2}
           autoplay={{ delay: 3500, disableOnInteraction: false }}
           coverflowEffect={{
             rotate: 0,
-            stretch: -50,
-            depth: 250,
+            stretch: -80,
+            depth: 300,
             modifier: 1,
             slideShadows: false,
             scale: 0.85,
           }}
           pagination={{ clickable: true }}
         >
-          {cards.map((card) => (
-            <SwiperSlide key={card.title}>
-              <TiltCard {...card} />
+          {loopCards.map((card, i) => (
+            <SwiperSlide key={`${card.title}-${i}`}>
+              <div className="tilt-perspective">
+                <TiltCard {...card} />
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>
