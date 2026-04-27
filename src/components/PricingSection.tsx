@@ -37,7 +37,7 @@ export default function PricingSection() {
           variants={itemVariants}
           className="text-xs uppercase tracking-[0.15em] font-semibold text-[#a7f3d0] border-b border-[#a7f3d0]/30 pb-2 mb-12 text-center"
         >
-          Lote de Lançamento — 12 de 50 vagas restantes
+          LOTE DE LANÇAMENTO — 12 DE 50 VAGAS RESTANTES
         </motion.div>
 
         {/* Editorial Header */}
