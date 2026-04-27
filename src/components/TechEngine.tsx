@@ -45,9 +45,9 @@ const TiltCard: React.FC<TiltCardProps> = ({ title, icon, description }) => {
         transformStyle: "preserve-3d",
         backgroundColor: "#064E3B",
       }}
-      className="border border-white/10 p-10 rounded-3xl shadow-2xl hover:shadow-3xl transition-shadow duration-300 will-change-transform"
+      className="h-full flex flex-col border border-white/10 p-10 rounded-3xl shadow-2xl hover:shadow-3xl transition-shadow duration-300 will-change-transform"
     >
-      <div style={{ transform: "translateZ(40px)" }}>
+      <div style={{ transform: "translateZ(40px)" }} className="flex-1">
         <div className="mb-6">{icon}</div>
         <h3 className="text-2xl font-extrabold text-white mb-4">{title}</h3>
         <p className="text-[#a7f3d0] leading-relaxed text-lg">{description}</p>
