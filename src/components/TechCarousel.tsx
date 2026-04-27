@@ -230,7 +230,7 @@ const TechCarousel: React.FC = () => {
           centeredSlides
           slidesPerView={"auto"}
           loop
-          loopedSlides={4}
+          loopedSlides={8}
           loopAdditionalSlides={4}
           autoplay={{ delay: 6000, disableOnInteraction: false }}
           speed={1200}
