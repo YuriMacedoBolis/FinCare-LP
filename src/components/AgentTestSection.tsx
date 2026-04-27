@@ -119,7 +119,7 @@ export default function AgentTestSection() {
               className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               <div
-                className={`max-w-[80%] md:max-w-[70%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed shadow-sm ${
+                className={`max-w-[80%] md:max-w-[70%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed shadow-sm whitespace-pre-wrap ${
                   m.role === 'user'
                     ? 'bg-[#FF6400] text-white rounded-br-sm'
                     : 'bg-slate-100 text-slate-800 rounded-bl-sm'
