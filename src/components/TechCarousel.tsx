@@ -229,9 +229,7 @@ const TechCarousel: React.FC = () => {
           grabCursor
           centeredSlides
           slidesPerView={"auto"}
-          loop
-          loopedSlides={8}
-          loopAdditionalSlides={4}
+          loop={false}
           autoplay={{ delay: 6000, disableOnInteraction: false }}
           speed={1200}
           coverflowEffect={{
