@@ -95,11 +95,53 @@ const cardData: CardData[] = [
   {
     title: "Fim do Trabalho Manual",
     description:
-      "Esqueça horas perdidas com planilhas. O tempo livre e a clareza mental que nossa IA te devolve valem exponencialmente mais do que o custo.",
+      "Esqueça horas perdidas com planilhas. O tempo livre e a clareza mental que nossa IA te devolve valem mais do que o custo.",
     icon: (
       <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF6400" strokeWidth="2">
         <circle cx="12" cy="12" r="10" />
         <polyline points="12 6 12 12 16 14" />
+      </svg>
+    ),
+  },
+  {
+    title: "Sincronização Cloud",
+    description:
+      "Comece a analisar no computador e termine de registrar no celular. Seus dados fluem com você, em tempo real, em qualquer lugar.",
+    icon: (
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF6400" strokeWidth="2">
+        <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Previsão Inteligente",
+    description:
+      "A IA não apenas lê o passado, ela prevê o seu futuro. Receba alertas de tendências de gastos antes do mês fechar no vermelho.",
+    icon: (
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF6400" strokeWidth="2">
+        <path d="M2 12h4l3-9 5 18 3-9h5" />
+      </svg>
+    ),
+  },
+  {
+    title: "Exportação Livre",
+    description:
+      "O seu dinheiro e os seus dados são seus. Exporte relatórios completos em CSV ou PDF com um clique, sem fidelidade ou travas.",
+    icon: (
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF6400" strokeWidth="2">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+        <polyline points="7 10 12 15 17 10" />
+        <line x1="12" y1="15" x2="12" y2="3" />
+      </svg>
+    ),
+  },
+  {
+    title: "Design Premium",
+    description:
+      "Uma interface limpa, sem anúncios e sem distrações bancárias. Desenhada para focar apenas no que importa: o seu crescimento patrimonial.",
+    icon: (
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF6400" strokeWidth="2">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
       </svg>
     ),
   },
