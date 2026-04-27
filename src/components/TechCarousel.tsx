@@ -175,16 +175,16 @@ const TechCarousel: React.FC = () => {
         .tech-carousel .swiper-slide {
           width: 380px;
           max-width: 85vw;
-          opacity: 0.2 !important;
-          filter: blur(3px);
-          transition: opacity 0.4s ease, filter 0.4s ease;
+          opacity: 0.15 !important;
+          filter: blur(2.5px);
+          transition: opacity 0.3s ease, filter 0.3s ease;
         }
         .tech-carousel .swiper-slide-active {
           opacity: 1 !important;
           filter: blur(0px) !important;
         }
         .tech-carousel .tilt-perspective {
-          perspective: 1200px;
+          perspective: 1500px;
         }
         .tech-carousel .swiper-pagination {
           margin-top: 24px;
