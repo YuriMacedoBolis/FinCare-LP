@@ -28,22 +28,51 @@ export default function AgentTestSection() {
     }
   }, [messages, isLoading]);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const trimmed = input.trim();
-    if (!trimmed || isLoading) return;
+    const userMessage = input.trim();
+    if (!userMessage || isLoading) return;
 
-    setMessages((prev) => [...prev, { role: 'user', text: trimmed }]);
+    setMessages((prev) => [...prev, { role: 'user', text: userMessage }]);
     setInput('');
     setIsLoading(true);
 
-    setTimeout(() => {
+    try {
+      const response = await fetch('https://n8n-self.duckdns.org/webhook/AgnteTestDrive', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: userMessage }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.text();
+      let aiText = data;
+
+      try {
+        const parsed = JSON.parse(data);
+        if (parsed.reply) {
+          aiText = parsed.reply;
+        }
+      } catch {
+        // Plain text response — keep aiText as is.
+      }
+
+      setMessages((prev) => [...prev, { role: 'ai', text: aiText }]);
+    } catch (error) {
+      console.error('Webhook Error:', error);
       setMessages((prev) => [
         ...prev,
-        { role: 'ai', text: 'MOCK: Despesa registrada e categorizada com sucesso!' },
+        {
+          role: 'ai',
+          text: 'Ops! Nosso agente teve um pequeno soluço de conexão. Tente novamente em alguns segundos. 🧡',
+        },
       ]);
+    } finally {
       setIsLoading(false);
-    }, 1500);
+    }
   };
 
   return (
@@ -90,7 +119,7 @@ export default function AgentTestSection() {
               className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               <div
-                className={`max-w-[80%] md:max-w-[70%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed shadow-sm ${
+                className={`max-w-[80%] md:max-w-[70%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed shadow-sm whitespace-pre-wrap ${
                   m.role === 'user'
                     ? 'bg-[#FF6400] text-white rounded-br-sm'
                     : 'bg-slate-100 text-slate-800 rounded-bl-sm'
