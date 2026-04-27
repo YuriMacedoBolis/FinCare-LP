@@ -165,11 +165,12 @@ const TechEngine: React.FC = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-20 max-w-5xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-20 max-w-5xl mx-auto items-stretch"
         >
           {cards.map((card) => (
             <motion.div
               key={card.title}
+              className="h-full"
               variants={{
                 hidden: { opacity: 0, y: 50 },
                 show: {
