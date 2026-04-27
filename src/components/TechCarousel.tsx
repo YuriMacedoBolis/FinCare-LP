@@ -154,8 +154,8 @@ type SwiperWithLoopedSlidesProps = React.ComponentProps<typeof Swiper> & {
 const SwiperWithLoopedSlides = Swiper as React.ComponentType<SwiperWithLoopedSlidesProps>;
 
 const TechCarousel: React.FC = () => {
-  // Duplicate slides to make loop robust with few items + slidesPerView:'auto'
-  const carouselData = [...cardData, ...cardData];
+  const carouselData = cardData;
+
 
   return (
     <section
