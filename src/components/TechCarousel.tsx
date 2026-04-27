@@ -23,13 +23,13 @@ const TiltCard: React.FC<CardData> = ({ title, description, icon }) => {
   const xSpring = useSpring(x, { stiffness: 150, damping: 20 });
   const ySpring = useSpring(y, { stiffness: 150, damping: 20 });
 
-  const rotateX = useTransform(ySpring, [-0.5, 0.5], ["12deg", "-12deg"]);
-  const rotateY = useTransform(xSpring, [-0.5, 0.5], ["-12deg", "12deg"]);
+  const rotateX = useTransform(ySpring, [-10, 10], ["8deg", "-8deg"]);
+  const rotateY = useTransform(xSpring, [-10, 10], ["-8deg", "8deg"]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
-    const px = (e.clientX - rect.left) / rect.width - 0.5;
-    const py = (e.clientY - rect.top) / rect.height - 0.5;
+    const px = (e.clientX - (rect.left + rect.width / 2)) / 40;
+    const py = (e.clientY - (rect.top + rect.height / 2)) / 40;
     x.set(px);
     y.set(py);
   };
@@ -60,7 +60,7 @@ const TiltCard: React.FC<CardData> = ({ title, description, icon }) => {
   );
 };
 
-const cards: CardData[] = [
+const cardData: CardData[] = [
   {
     title: "Latência Zero",
     description:
@@ -105,9 +105,15 @@ const cards: CardData[] = [
   },
 ];
 
+type SwiperWithLoopedSlidesProps = React.ComponentProps<typeof Swiper> & {
+  loopedSlides?: number;
+};
+
+const SwiperWithLoopedSlides = Swiper as React.ComponentType<SwiperWithLoopedSlidesProps>;
+
 const TechCarousel: React.FC = () => {
   // Duplicate slides to make loop robust with few items + slidesPerView:'auto'
-  const loopCards = [...cards, ...cards];
+  const carouselData = [...cardData, ...cardData];
 
   return (
     <section
@@ -127,8 +133,8 @@ const TechCarousel: React.FC = () => {
         .tech-carousel .swiper-slide {
           width: 380px;
           max-width: 85vw;
-          opacity: 0.15;
-          filter: blur(2.5px);
+          opacity: 0.2 !important;
+          filter: blur(3px);
           transition: opacity 0.4s ease, filter 0.4s ease;
         }
         .tech-carousel .swiper-slide-active {
@@ -175,14 +181,15 @@ const TechCarousel: React.FC = () => {
       </div>
 
       <div className="tech-carousel">
-        <Swiper
+        <SwiperWithLoopedSlides
           modules={[EffectCoverflow, Pagination, Autoplay]}
           effect={"coverflow"}
           grabCursor
           centeredSlides
           slidesPerView={"auto"}
           loop
-          loopAdditionalSlides={2}
+          loopedSlides={4}
+          loopAdditionalSlides={4}
           autoplay={{ delay: 6000, disableOnInteraction: false }}
           speed={1200}
           coverflowEffect={{
@@ -195,14 +202,14 @@ const TechCarousel: React.FC = () => {
           }}
           pagination={{ clickable: true }}
         >
-          {loopCards.map((card, i) => (
+          {carouselData.map((card, i) => (
             <SwiperSlide key={`${card.title}-${i}`}>
               <div className="tilt-perspective">
                 <TiltCard {...card} />
               </div>
             </SwiperSlide>
           ))}
-        </Swiper>
+        </SwiperWithLoopedSlides>
       </div>
     </section>
   );
