@@ -520,7 +520,7 @@ const MagneticShowcase = () => {
     <section className="relative z-20 bg-[#F9FAFB] rounded-t-[3rem] md:rounded-t-[5rem] -mt-12 md:-mt-24 pt-24 md:pt-32 pb-20 px-6">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row relative">
         {/* Left Column */}
-        <div className="w-full md:w-1/2 py-[10vh] md:py-[30vh] flex flex-col gap-[30vh] md:gap-[50vh]">
+        <div className="w-full md:w-1/2 pt-[10vh] md:pt-[30vh] pb-[40vh] flex flex-col gap-[30vh] md:gap-[50vh]">
           {STEPS.map((s, i) => (
             <StepBlock
               key={i}
