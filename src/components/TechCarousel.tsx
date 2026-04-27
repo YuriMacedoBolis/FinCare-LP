@@ -23,16 +23,15 @@ const TiltCard: React.FC<CardData> = ({ title, description, icon }) => {
   const xSpring = useSpring(x, { stiffness: 150, damping: 20 });
   const ySpring = useSpring(y, { stiffness: 150, damping: 20 });
 
-  const rotateX = useTransform(ySpring, [-0.5, 0.5], ["3deg", "-3deg"]);
-  const rotateY = useTransform(xSpring, [-0.5, 0.5], ["-3deg", "3deg"]);
+  const rotateX = useTransform(ySpring, [-0.5, 0.5], ["12deg", "-12deg"]);
+  const rotateY = useTransform(xSpring, [-0.5, 0.5], ["-12deg", "12deg"]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const px = (e.clientX - rect.left) / rect.width - 0.5;
     const py = (e.clientY - rect.top) / rect.height - 0.5;
-    // Subtle: divide further to dampen
-    x.set(px / 2);
-    y.set(py / 2);
+    x.set(px);
+    y.set(py);
   };
 
   const handleMouseLeave = () => {
