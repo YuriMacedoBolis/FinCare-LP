@@ -18,15 +18,16 @@ export const Route = createFileRoute("/sobre")({
 function SobrePage() {
   const router = useRouter();
   return (
-    <main className="bg-white">
-      <div className="max-w-6xl mx-auto pt-10 px-6">
-        <button
-          onClick={() => (window.history.length > 1 ? router.history.back() : router.navigate({ to: "/" }))}
-          className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-slate-900 transition-colors"
-        >
-          <ArrowLeft className="w-4 h-4" /> Voltar
-        </button>
-      </div>
+    <main>
+      <div className="min-h-screen bg-[#FF6400]">
+        <div className="max-w-6xl mx-auto pt-10 px-6 bg-transparent">
+          <button
+            onClick={() => (window.history.length > 1 ? router.history.back() : router.navigate({ to: "/" }))}
+            className="inline-flex items-center gap-2 text-sm text-white hover:text-slate-200 opacity-90 hover:opacity-100 transition-opacity"
+          >
+            <ArrowLeft className="w-4 h-4" /> Voltar
+          </button>
+        </div>
 
       <ContainerScroll
         titleComponent={
