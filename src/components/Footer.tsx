@@ -68,11 +68,11 @@ export default function Footer() {
             <div className="flex flex-col gap-4">
               {supportLinks.map((link) => (
                 <a
-                  key={link}
-                  href="#"
+                  key={link.label}
+                  href={link.href}
                   className="text-slate-400 text-sm hover:text-[#a7f3d0] transition-colors"
                 >
-                  {link}
+                  {link.label}
                 </a>
               ))}
             </div>
