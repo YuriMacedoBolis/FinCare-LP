@@ -35,6 +35,25 @@ const features = [
 ];
 
 export default function PricingSection() {
+  const [open, setOpen] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value.replace(/\D/g, "");
+    if (value.length <= 11) {
+      value = value.replace(/^(\d{2})(\d)/g, "($1) $2");
+      value = value.replace(/(\d)(\d{4})$/, "$1-$2");
+    }
+    setPhone(value);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    window.location.href = "COLE_AQUI_O_LINK_DO_MERCADO_PAGO";
+  };
+
   return (
     <section id="precos" className="relative z-40 bg-[#064E3B] rounded-t-[3rem] md:rounded-t-[5rem] -mt-12 md:-mt-16 pt-32 md:pt-40 pb-32 px-6 flex flex-col items-center overflow-hidden scroll-mt-24">
       <motion.div
