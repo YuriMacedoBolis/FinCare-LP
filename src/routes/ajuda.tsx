@@ -81,6 +81,7 @@ function AjudaPage() {
           </div>
         </div>
       </ContainerScroll>
+      </div>
 
       <Footer />
     </main>
