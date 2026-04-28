@@ -6,6 +6,7 @@ import TechCarousel from "@/components/TechCarousel";
 import AgentTestSection from "@/components/AgentTestSection";
 import PricingSection from "@/components/PricingSection";
 import Footer from "@/components/Footer";
+import GlobalFooter from "@/components/GlobalFooter";
 import SmartNavbar from "@/components/SmartNavbar";
 
 export const Route = createFileRoute("/")({
@@ -23,6 +24,7 @@ function Index() {
       <AgentTestSection />
       <PricingSection />
       <Footer />
+      <GlobalFooter />
     </main>
   );
 }
