@@ -80,7 +80,7 @@ function TermosPage() {
           </a>
         </p>
       </div>
-      <GlobalFooter />
+      <Footer />
     </main>
   );
 }

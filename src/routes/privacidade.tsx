@@ -79,7 +79,7 @@ function PrivacidadePage() {
           </a>
         </p>
       </div>
-      <GlobalFooter />
+      <Footer />
     </main>
   );
 }
