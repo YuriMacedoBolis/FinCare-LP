@@ -30,9 +30,9 @@ function ContatoPage() {
 
       <ContainerScroll
         titleComponent={
-          <h1 className="text-4xl md:text-6xl font-semibold text-slate-900 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-semibold text-white leading-tight">
             Fale com a equipe <br />
-            <span className="text-5xl md:text-[6rem] font-bold mt-1 leading-none bg-gradient-to-b from-[#064E3B] to-[#10B981] bg-clip-text text-transparent">
+            <span className="text-5xl md:text-[6rem] font-bold mt-1 leading-none text-[#0f172a]">
               FinCare
             </span>
           </h1>
