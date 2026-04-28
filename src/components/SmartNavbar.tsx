@@ -65,7 +65,7 @@ export default function SmartNavbar() {
                   Entrar
                 </a>
                 <a
-                  href="#pricing"
+                  href="#precos"
                   className="bg-[#064E3B] hover:bg-[#04382a] text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all hover:-translate-y-0.5 whitespace-nowrap"
                 >
                   Assinar Agora
