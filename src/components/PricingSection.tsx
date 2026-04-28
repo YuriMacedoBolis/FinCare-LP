@@ -12,7 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { supabase } from "@/integrations/supabase/client";
+import { externalSupabase } from "@/integrations/external-supabase/client";
 import { toast } from "sonner";
 
 const containerVariants: Variants = {
@@ -41,6 +41,7 @@ export default function PricingSection() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,22 +55,65 @@ export default function PricingSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (password.length < 6) {
+      toast.error("A senha deve ter no mínimo 6 caracteres.");
+      return;
+    }
     setSubmitting(true);
 
-    const { error } = await supabase.from("profiles").insert({
-      name: name.trim(),
-      email: email.trim().toLowerCase(),
-      whatsapp: phone.trim(),
-      payment_status: "pending",
+    const cleanEmail = email.trim().toLowerCase();
+    const cleanName = name.trim();
+    const cleanPhone = phone.trim();
+
+    // 1) Cria a conta no auth do Supabase externo
+    const { data: signUpData, error: signUpError } = await externalSupabase.auth.signUp({
+      email: cleanEmail,
+      password,
+      options: {
+        emailRedirectTo: `${window.location.origin}/`,
+        data: {
+          full_name: cleanName,
+          phone: cleanPhone,
+        },
+      },
     });
 
-    if (error) {
-      console.error("Erro ao salvar lead:", error);
-      toast.error("Não foi possível salvar seus dados. Tente novamente.");
+    if (signUpError) {
+      console.error("Erro no signup:", signUpError);
+      const msg = signUpError.message?.toLowerCase().includes("already")
+        ? "Este e-mail já está cadastrado. Faça login para continuar."
+        : "Não foi possível criar sua conta. Tente novamente.";
+      toast.error(msg);
       setSubmitting(false);
       return;
     }
 
+    const userId = signUpData.user?.id;
+
+    // 2) Atualiza/garante a row em profiles (a row pode ser criada por trigger no signup;
+    //    upsert garante que os campos do formulário fiquem preenchidos)
+    if (userId) {
+      const { error: profileError } = await externalSupabase
+        .from("profiles")
+        .upsert(
+          {
+            id: userId,
+            full_name: cleanName,
+            email: cleanEmail,
+            phone: cleanPhone,
+            subscription_status: "pending",
+          },
+          { onConflict: "id" },
+        );
+
+      if (profileError) {
+        console.error("Erro ao salvar profile:", profileError);
+        // Não bloqueia o checkout — usuário já foi criado no auth
+        toast.warning("Conta criada, mas houve um problema ao salvar dados extras.");
+      }
+    }
+
+    // 3) Redireciona para o Mercado Pago
     window.location.href =
       "https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=f5569c713e1c4b61b80c5a7fecb0833f";
   };
