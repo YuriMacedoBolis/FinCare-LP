@@ -1,7 +1,11 @@
 import { Link } from "@tanstack/react-router";
 
 export default function Footer() {
-  const productLinks = ["Como Funciona", "Segurança & IA", "Preços"];
+  const productLinks: { label: string; href: string }[] = [
+    { label: "Como Funciona", href: "#como-funciona" },
+    { label: "Segurança & IA", href: "#tecnologia" },
+    { label: "Preços", href: "#precos" },
+  ];
   const companyLinks = ["Nossa História", "Central de Ajuda", "Contato"];
   const supportLinks = ["fincareti@gmail.com", "Instagram"];
 
@@ -25,11 +29,11 @@ export default function Footer() {
             <div className="flex flex-col gap-4">
               {productLinks.map((link) => (
                 <a
-                  key={link}
-                  href="#"
+                  key={link.label}
+                  href={link.href}
                   className="text-slate-400 text-sm hover:text-[#a7f3d0] transition-colors"
                 >
-                  {link}
+                  {link.label}
                 </a>
               ))}
             </div>
