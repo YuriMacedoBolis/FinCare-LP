@@ -1,3 +1,5 @@
+import { Link } from "@tanstack/react-router";
+
 export default function Footer() {
   const productLinks = ["Como Funciona", "Segurança & IA", "Preços"];
   const companyLinks = ["Nossa História", "Central de Ajuda", "Contato"];
@@ -72,12 +74,12 @@ export default function Footer() {
             © 2026 FinCare Brasil. Todos os direitos reservados.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-sm text-slate-500 hover:text-white transition-colors">
+            <Link to="/termos" className="text-sm text-slate-500 hover:text-white transition-colors">
               Termos de Serviço
-            </a>
-            <a href="#" className="text-sm text-slate-500 hover:text-white transition-colors">
+            </Link>
+            <Link to="/privacidade" className="text-sm text-slate-500 hover:text-white transition-colors">
               Política de Privacidade
-            </a>
+            </Link>
           </div>
         </div>
       </div>
