@@ -6,7 +6,11 @@ export default function Footer() {
     { label: "Segurança & IA", href: "#tecnologia" },
     { label: "Preços", href: "#precos" },
   ];
-  const companyLinks = ["Nossa História", "Central de Ajuda", "Contato"];
+  const companyLinks: { label: string; to: string }[] = [
+    { label: "Nossa História", to: "/sobre" },
+    { label: "Central de Ajuda", to: "/ajuda" },
+    { label: "Contato", to: "/contato" },
+  ];
   const supportLinks = ["fincareti@gmail.com", "Instagram"];
 
   return (
@@ -44,13 +48,13 @@ export default function Footer() {
             <h3 className="text-xs font-bold text-white tracking-widest mb-6">EMPRESA</h3>
             <div className="flex flex-col gap-4">
               {companyLinks.map((link) => (
-                <a
-                  key={link}
-                  href="#"
+                <Link
+                  key={link.label}
+                  to={link.to}
                   className="text-slate-400 text-sm hover:text-[#a7f3d0] transition-colors"
                 >
-                  {link}
-                </a>
+                  {link.label}
+                </Link>
               ))}
             </div>
           </div>
