@@ -11,7 +11,10 @@ export default function Footer() {
     { label: "Central de Ajuda", to: "/ajuda" },
     { label: "Contato", to: "/contato" },
   ];
-  const supportLinks = ["fincareti@gmail.com", "Instagram"];
+  const supportLinks: { label: string; href: string }[] = [
+    { label: "fincareti@gmail.com", href: "mailto:fincareti@gmail.com" },
+    { label: "Instagram", href: "#" },
+  ];
 
   return (
     <footer className="bg-[#031f17] text-white px-6 pt-24 pb-10">
