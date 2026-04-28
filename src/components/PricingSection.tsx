@@ -63,7 +63,7 @@ export default function PricingSection() {
 
     const cleanEmail = email.trim().toLowerCase();
     const cleanName = name.trim();
-    const cleanPhone = phone.trim();
+    const cleanPhone = phone.replace(/\D/g, "");
 
     // 1) Cria a conta no auth do Supabase externo
     const { data: signUpData, error: signUpError } = await externalSupabase.auth.signUp({
