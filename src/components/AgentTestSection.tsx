@@ -76,7 +76,7 @@ export default function AgentTestSection() {
   };
 
   return (
-    <section className="bg-white">
+    <section id="teste-ia" className="bg-white scroll-mt-24">
       <ContainerScroll
         titleComponent={
           <>

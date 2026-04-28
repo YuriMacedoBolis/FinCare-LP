@@ -61,7 +61,8 @@ const TiltCard: React.FC<TiltCardProps> = ({ children, delay = 0 }) => {
 const FeatureBridge: React.FC = () => {
   return (
     <section
-      className="bg-[#FF6400] py-32 px-6 flex justify-center overflow-hidden"
+      id="como-funciona"
+      className="bg-[#FF6400] py-32 px-6 flex justify-center overflow-hidden scroll-mt-24"
       style={{ perspective: "1200px" }}
     >
       <div className="w-full max-w-5xl flex flex-col items-center">

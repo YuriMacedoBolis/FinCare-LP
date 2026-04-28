@@ -159,7 +159,8 @@ const TechCarousel: React.FC = () => {
 
   return (
     <section
-      className="relative z-30 bg-[#FF6400] rounded-t-[3rem] md:rounded-t-[5rem] -mt-12 md:-mt-24 pt-32 pb-32 overflow-hidden"
+      id="tecnologia"
+      className="relative z-30 bg-[#FF6400] rounded-t-[3rem] md:rounded-t-[5rem] -mt-12 md:-mt-24 pt-32 pb-32 overflow-hidden scroll-mt-24"
     >
       <style>{`
         .tech-carousel,
