@@ -1,6 +1,6 @@
 import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
-import GlobalFooter from "@/components/GlobalFooter";
+import Footer from "@/components/Footer";
 
 export const Route = createFileRoute("/termos")({
   head: () => ({
@@ -80,7 +80,7 @@ function TermosPage() {
           </a>
         </p>
       </div>
-      <GlobalFooter />
+      <Footer />
     </main>
   );
 }
