@@ -89,6 +89,7 @@ function ContatoPage() {
           </div>
         </div>
       </ContainerScroll>
+      </div>
 
       <Footer />
     </main>
