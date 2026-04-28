@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, type Variants } from "framer-motion";
-import { Check, Shield } from "lucide-react";
+import { Check, Shield, Lock } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -51,7 +51,22 @@ export default function PricingSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    window.location.href = "COLE_AQUI_O_LINK_DO_MERCADO_PAGO";
+    window.location.href =
+      "https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=f5569c713e1c4b61b80c5a7fecb0833f";
+  };
+
+  const modalContainerVariants: Variants = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
+  };
+
+  const modalItemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 300, damping: 24 },
+    },
   };
 
   return (
@@ -122,56 +137,87 @@ export default function PricingSection() {
                 <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-20deg]" />
               </button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-md">
-              <DialogHeader>
-                <DialogTitle className="text-2xl">Quase lá! 🚀</DialogTitle>
-                <DialogDescription>
-                  Preencha seus dados para criar sua conta e prosseguir para o pagamento seguro.
-                </DialogDescription>
-              </DialogHeader>
-              <form onSubmit={handleSubmit} className="space-y-4 mt-2">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Nome Completo</Label>
-                  <Input
-                    id="name"
-                    type="text"
-                    required
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    className="focus-visible:ring-[#FF6400]"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email">E-mail</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="focus-visible:ring-[#FF6400]"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="phone">WhatsApp</Label>
-                  <Input
-                    id="phone"
-                    type="tel"
-                    required
-                    placeholder="(00) 00000-0000"
-                    value={phone}
-                    onChange={handlePhoneChange}
-                    maxLength={15}
-                    className="focus-visible:ring-[#FF6400]"
-                  />
-                </div>
-                <Button
-                  type="submit"
-                  className="w-full bg-[#FF6400] hover:bg-orange-600 text-white font-bold"
-                >
-                  Ir para Pagamento Seguro 🔒
-                </Button>
-              </form>
+            <DialogContent className="sm:max-w-md bg-white rounded-[32px] border-0 p-8 sm:p-10 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.3)] font-sans">
+              <motion.div
+                variants={modalContainerVariants}
+                initial="hidden"
+                animate="show"
+              >
+                <motion.div variants={modalItemVariants}>
+                  <DialogHeader className="space-y-2 text-left mb-6">
+                    <DialogTitle className="text-3xl font-bold text-slate-900 tracking-tight">
+                      Complete seu cadastro
+                    </DialogTitle>
+                    <DialogDescription className="text-base text-slate-500 leading-relaxed">
+                      Preencha seus dados para prosseguir ao pagamento seguro.
+                    </DialogDescription>
+                  </DialogHeader>
+                </motion.div>
+
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <motion.div variants={modalItemVariants} className="space-y-2">
+                    <Label htmlFor="name" className="text-sm font-medium text-slate-700">
+                      Nome Completo
+                    </Label>
+                    <Input
+                      id="name"
+                      type="text"
+                      required
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className="h-14 rounded-2xl bg-slate-50 border border-slate-200 px-4 text-base text-slate-900 shadow-none transition-colors focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-[#FF6400] focus-visible:bg-white"
+                    />
+                  </motion.div>
+
+                  <motion.div variants={modalItemVariants} className="space-y-2">
+                    <Label htmlFor="email" className="text-sm font-medium text-slate-700">
+                      E-mail
+                    </Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="h-14 rounded-2xl bg-slate-50 border border-slate-200 px-4 text-base text-slate-900 shadow-none transition-colors focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-[#FF6400] focus-visible:bg-white"
+                    />
+                  </motion.div>
+
+                  <motion.div variants={modalItemVariants} className="space-y-2">
+                    <Label htmlFor="phone" className="text-sm font-medium text-slate-700">
+                      WhatsApp
+                    </Label>
+                    <Input
+                      id="phone"
+                      type="tel"
+                      required
+                      inputMode="numeric"
+                      placeholder="(00) 00000-0000"
+                      value={phone}
+                      onChange={handlePhoneChange}
+                      maxLength={15}
+                      className="h-14 rounded-2xl bg-slate-50 border border-slate-200 px-4 text-base text-slate-900 shadow-none transition-colors focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-[#FF6400] focus-visible:bg-white"
+                    />
+                  </motion.div>
+
+                  <motion.div variants={modalItemVariants} className="pt-2">
+                    <Button
+                      type="submit"
+                      className="w-full h-16 rounded-2xl bg-[#FF6400] hover:bg-[#e65a00] text-white font-semibold text-base tracking-tight shadow-[0_10px_25px_-5px_rgba(255,100,0,0.4)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_15px_30px_-5px_rgba(255,100,0,0.5)]"
+                    >
+                      Ir para Pagamento Seguro
+                    </Button>
+                  </motion.div>
+
+                  <motion.div
+                    variants={modalItemVariants}
+                    className="flex items-center justify-center gap-2 pt-2 text-xs text-slate-400"
+                  >
+                    <Lock className="w-3.5 h-3.5" />
+                    <span>Checkout Seguro • Mercado Pago</span>
+                  </motion.div>
+                </form>
+              </motion.div>
             </DialogContent>
           </Dialog>
         </motion.div>
