@@ -263,6 +263,21 @@ export default function PricingSection() {
                     />
                   </motion.div>
 
+                  <motion.div variants={modalItemVariants} className="space-y-2">
+                    <Label htmlFor="password" className="text-sm font-medium text-slate-700">
+                      Crie uma senha
+                    </Label>
+                    <Input
+                      id="password"
+                      type="password"
+                      required
+                      minLength={6}
+                      placeholder="Mínimo 6 caracteres"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      className="h-14 rounded-2xl bg-slate-50 border border-slate-200 px-4 text-base text-slate-900 shadow-none transition-colors focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-[#FF6400] focus-visible:bg-white"
+                    />
+
                   <motion.div variants={modalItemVariants} className="pt-2">
                     <Button
                       type="submit"
