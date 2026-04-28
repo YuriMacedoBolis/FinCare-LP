@@ -66,6 +66,7 @@ function SobrePage() {
           </div>
         </div>
       </ContainerScroll>
+      </div>
 
       <Footer />
     </main>
