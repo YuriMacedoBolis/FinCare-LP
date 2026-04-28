@@ -277,6 +277,7 @@ export default function PricingSection() {
                       onChange={(e) => setPassword(e.target.value)}
                       className="h-14 rounded-2xl bg-slate-50 border border-slate-200 px-4 text-base text-slate-900 shadow-none transition-colors focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-[#FF6400] focus-visible:bg-white"
                     />
+                  </motion.div>
 
                   <motion.div variants={modalItemVariants} className="pt-2">
                     <Button
