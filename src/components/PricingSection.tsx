@@ -1,5 +1,17 @@
+import { useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import { Check, Shield } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -23,6 +35,25 @@ const features = [
 ];
 
 export default function PricingSection() {
+  const [open, setOpen] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value.replace(/\D/g, "");
+    if (value.length <= 11) {
+      value = value.replace(/^(\d{2})(\d)/g, "($1) $2");
+      value = value.replace(/(\d)(\d{4})$/, "$1-$2");
+    }
+    setPhone(value);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    window.location.href = "COLE_AQUI_O_LINK_DO_MERCADO_PAGO";
+  };
+
   return (
     <section id="precos" className="relative z-40 bg-[#064E3B] rounded-t-[3rem] md:rounded-t-[5rem] -mt-12 md:-mt-16 pt-32 md:pt-40 pb-32 px-6 flex flex-col items-center overflow-hidden scroll-mt-24">
       <motion.div
@@ -84,10 +115,65 @@ export default function PricingSection() {
             ))}
           </ul>
 
-          <button className="bg-[#FF6400] hover:bg-[#e65a00] text-white w-full py-5 rounded-xl font-semibold text-lg transition-all duration-300 relative overflow-hidden group mt-4">
-            <span className="relative z-10">Garantir minha vaga agora</span>
-            <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-20deg]" />
-          </button>
+          <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger asChild>
+              <button className="bg-[#FF6400] hover:bg-[#e65a00] text-white w-full py-5 rounded-xl font-semibold text-lg transition-all duration-300 relative overflow-hidden group mt-4">
+                <span className="relative z-10">Garantir minha vaga agora</span>
+                <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-20deg]" />
+              </button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-md">
+              <DialogHeader>
+                <DialogTitle className="text-2xl">Quase lá! 🚀</DialogTitle>
+                <DialogDescription>
+                  Preencha seus dados para criar sua conta e prosseguir para o pagamento seguro.
+                </DialogDescription>
+              </DialogHeader>
+              <form onSubmit={handleSubmit} className="space-y-4 mt-2">
+                <div className="space-y-2">
+                  <Label htmlFor="name">Nome Completo</Label>
+                  <Input
+                    id="name"
+                    type="text"
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="focus-visible:ring-[#FF6400]"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="email">E-mail</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="focus-visible:ring-[#FF6400]"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="phone">WhatsApp</Label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    required
+                    placeholder="(00) 00000-0000"
+                    value={phone}
+                    onChange={handlePhoneChange}
+                    maxLength={15}
+                    className="focus-visible:ring-[#FF6400]"
+                  />
+                </div>
+                <Button
+                  type="submit"
+                  className="w-full bg-[#FF6400] hover:bg-orange-600 text-white font-bold"
+                >
+                  Ir para Pagamento Seguro 🔒
+                </Button>
+              </form>
+            </DialogContent>
+          </Dialog>
         </motion.div>
 
         {/* Guarantee Box */}
