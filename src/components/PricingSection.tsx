@@ -12,6 +12,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -39,6 +41,7 @@ export default function PricingSection() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value.replace(/\D/g, "");
@@ -49,8 +52,24 @@ export default function PricingSection() {
     setPhone(value);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitting(true);
+
+    const { error } = await supabase.from("profiles").insert({
+      name: name.trim(),
+      email: email.trim().toLowerCase(),
+      whatsapp: phone.trim(),
+      payment_status: "pending",
+    });
+
+    if (error) {
+      console.error("Erro ao salvar lead:", error);
+      toast.error("Não foi possível salvar seus dados. Tente novamente.");
+      setSubmitting(false);
+      return;
+    }
+
     window.location.href =
       "https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=f5569c713e1c4b61b80c5a7fecb0833f";
   };
