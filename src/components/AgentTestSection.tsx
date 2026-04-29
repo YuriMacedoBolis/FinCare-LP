@@ -80,11 +80,11 @@ export default function AgentTestSection() {
       <ContainerScroll
         titleComponent={
           <>
-            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="text-2xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight">
               Não acredite em nós. <br />
               <span className="font-serif italic text-[#FF6400]">Teste você mesmo.</span>
             </h2>
-            <p className="text-slate-600 md:text-lg max-w-xl mx-auto mt-4">
+            <p className="text-slate-600 text-sm md:text-lg max-w-xl mx-auto mt-4 px-4 md:px-0">
               Simule um gasto no chat abaixo e veja como a nossa IA processa e categoriza a
               informação em milissegundos.
             </p>
