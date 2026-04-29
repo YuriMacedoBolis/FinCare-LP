@@ -73,16 +73,16 @@ const FeatureBridge: React.FC = () => {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-center"
         >
-          <h2 className="text-white text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight font-sans leading-[1.05]">
+          <h2 className="text-white text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight font-sans leading-[1.05]">
             Deixe o trabalho pesado com a IA.
           </h2>
           <h2
-            className="text-5xl sm:text-6xl md:text-7xl font-bold italic font-playfair-italic leading-[1.05] mt-2"
+            className="text-4xl sm:text-6xl md:text-7xl font-bold italic font-playfair-italic leading-[1.05] mt-2"
             style={{ color: "#064E3B" }}
           >
             Foque nos seus sonhos.
           </h2>
-          <p className="text-white/90 max-w-2xl mx-auto mt-6 text-base md:text-lg">
+          <p className="text-white/90 max-w-2xl mx-auto mt-4 md:mt-6 text-sm md:text-lg">
             A FinCare Brasil elimina a fricção da organização financeira para
             que tenha tempo e clareza para construir o seu patrimônio.
           </p>
