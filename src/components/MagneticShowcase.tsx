@@ -48,11 +48,11 @@ const StepBlock = ({ index, icon, title, description, onActive }: StepProps) => 
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="font-[Inter] text-left"
     >
-      <div className="w-14 h-14 md:w-16 md:h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-4 md:mb-6">
+      <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-3 md:mb-6">
         {icon}
       </div>
-      <h3 className="text-3xl md:text-4xl font-extrabold text-[#064E3B]">{title}</h3>
-      <p className="text-slate-600 text-base md:text-lg mt-3 md:mt-4 max-w-md leading-relaxed">{description}</p>
+      <h3 className="text-2xl md:text-4xl font-extrabold text-[#064E3B] leading-tight">{title}</h3>
+      <p className="text-slate-600 text-sm md:text-lg mt-2 md:mt-4 max-w-md leading-relaxed">{description}</p>
     </motion.div>
   );
 };

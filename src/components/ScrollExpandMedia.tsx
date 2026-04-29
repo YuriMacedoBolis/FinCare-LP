@@ -153,7 +153,7 @@ const ScrollExpandMedia = ({
               >
                 {/* Expanded content (2-column layout) — driven by wowProgress (0.35 -> 0.45) */}
                 <motion.div
-                  className="absolute inset-0 flex flex-col md:flex-row items-center justify-center gap-8 p-6 md:p-12 lg:p-16"
+                  className="absolute inset-0 flex flex-col md:flex-row items-center justify-center gap-3 md:gap-8 p-4 md:p-12 lg:p-16 overflow-y-auto"
                   style={{
                     opacity: wowProgress,
                     transform: `translateY(${(1 - wowProgress) * 50}px)`,
@@ -162,32 +162,32 @@ const ScrollExpandMedia = ({
                   }}
                 >
                   {/* Left column */}
-                  <div className="flex-1 flex flex-col gap-5 text-left max-w-xl">
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0B192C] leading-tight">
+                  <div className="flex-1 flex flex-col gap-3 md:gap-5 text-left max-w-xl">
+                    <h2 className="text-xl md:text-4xl lg:text-5xl font-bold text-[#0B192C] leading-tight">
                       Bem-vindo à Nova Era.
                     </h2>
-                    <p className="text-base md:text-lg text-slate-600 leading-relaxed">
+                    <p className="text-sm md:text-lg text-slate-600 leading-relaxed">
                       A FinCare Brasil uniu a segurança do cofrinho clássico com
                       o poder da Inteligência Artificial. Registre gastos, crie
                       metas e converse com seu assistente financeiro 24/7.
                     </p>
-                    <p className="text-base md:text-lg font-bold text-[#FF6400]">
+                    <p className="text-sm md:text-lg font-bold text-[#FF6400]">
                       Garanta uma das 50 vagas de Membro Fundador por apenas R$ 9,90.
                     </p>
                     <button
                       type="button"
-                      className="self-start mt-2 inline-flex items-center justify-center bg-[#FF6400] hover:bg-[#e55a00] text-white font-semibold px-8 py-4 rounded-xl shadow-lg shadow-orange-500/30 transition-all duration-300 hover:scale-[1.02]"
+                      className="self-start mt-1 md:mt-2 inline-flex items-center justify-center bg-[#FF6400] hover:bg-[#e55a00] text-white font-semibold px-5 py-3 md:px-8 md:py-4 rounded-xl text-sm md:text-base shadow-lg shadow-orange-500/30 transition-all duration-300 hover:scale-[1.02]"
                     >
                       Garantir Minha Vaga
                     </button>
                   </div>
 
                   {/* Right column */}
-                  <div className="flex-1 flex items-center justify-center">
+                  <div className="flex-1 flex items-center justify-center min-h-0">
                     <img
                       src="/porquinho_fincare.webp"
                       alt="Porquinho FinCare com óculos"
-                      className="object-contain w-full h-full max-h-[400px] lg:max-h-[500px] drop-shadow-2xl"
+                      className="object-contain w-full max-h-[140px] md:max-h-[400px] lg:max-h-[500px] drop-shadow-2xl"
                     />
                   </div>
                 </motion.div>
@@ -204,20 +204,20 @@ const ScrollExpandMedia = ({
                 }}
               >
                 <h2
-                  className={`text-3xl md:text-5xl lg:text-6xl font-bold ${titleColorClass}`}
+                  className={`text-2xl md:text-5xl lg:text-6xl font-bold ${titleColorClass}`}
                   style={{ transform: `translateX(-${textTranslateX}vw)`, transition: 'transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), color 0.7s ease-in-out' }}
                 >
                   {firstLine}
                 </h2>
                 <h2
-                  className={`text-3xl md:text-5xl lg:text-6xl font-playfair-italic text-center ${titleColorClass}`}
+                  className={`text-2xl md:text-5xl lg:text-6xl font-playfair-italic text-center ${titleColorClass}`}
                   style={{ transform: `translateX(${textTranslateX}vw)`, transition: 'transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), color 0.7s ease-in-out' }}
                 >
                   {secondLine}
                 </h2>
                 {titleOpacity > 0.05 && (
                   <p
-                    className={`mt-6 text-sm md:text-base font-medium tracking-wide uppercase transition-colors duration-300 ${
+                    className={`mt-4 md:mt-6 text-xs md:text-base font-medium tracking-wide uppercase transition-colors duration-300 ${
                       expandProgress > 0.5 ? 'text-white/80' : 'text-[#064E3B]/70'
                     }`}
                   >
