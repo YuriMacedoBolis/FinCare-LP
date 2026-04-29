@@ -187,7 +187,7 @@ const ScrollExpandMedia = ({
                     <img
                       src="/porquinho_fincare.webp"
                       alt="Porquinho FinCare com óculos"
-                      className="object-contain w-full max-h-[110px] md:max-h-[400px] lg:max-h-[500px] drop-shadow-2xl"
+                      className="object-contain w-full max-h-[66px] md:max-h-[400px] lg:max-h-[500px] drop-shadow-2xl"
                     />
                   </div>
                 </motion.div>
