@@ -151,10 +151,10 @@ export default function PricingSection() {
 
         {/* Editorial Header */}
         <motion.div variants={itemVariants} className="flex flex-col items-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight text-center">
+          <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight text-center">
             A hora de assumir
           </h2>
-          <p className="text-5xl md:text-6xl font-playfair-italic text-[#FF6400] text-center mt-2">
+          <p className="text-4xl md:text-6xl font-playfair-italic text-[#FF6400] text-center mt-2">
             o controle.
           </p>
         </motion.div>
