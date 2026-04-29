@@ -616,7 +616,6 @@ const MobileScrollytelling = () => {
 
 const MagneticShowcase = () => {
   const [active, setActive] = useState(0);
-  const isMobile = useIsMobile();
 
   const renderInterface = () => {
     switch (active) {
@@ -633,46 +632,50 @@ const MagneticShowcase = () => {
     }
   };
 
-  if (isMobile) {
-    return <MobileScrollytelling />;
-  }
-
   return (
-    <section className="relative z-20 bg-[#F9FAFB] rounded-t-[3rem] md:rounded-t-[5rem] -mt-12 md:-mt-24 pt-24 md:pt-32 pb-20 px-6 md:px-6 overflow-hidden">
-      <div className="max-w-7xl mx-auto flex flex-row relative">
-        {/* Phone Column — pinned right on desktop */}
-        <div className="order-2 w-1/2 sticky top-0 h-screen z-10 flex items-center justify-center self-start">
-          <div className="w-full max-w-[320px] h-[650px] mx-auto bg-[#F4EFEA] rounded-[2.5rem] border-[10px] border-white shadow-2xl relative overflow-hidden flex flex-col">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={active}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: 0.35, ease: "easeOut" }}
-                className="absolute inset-0"
-              >
-                {renderInterface()}
-              </motion.div>
-            </AnimatePresence>
+    <>
+      {/* Mobile: pinned scrollytelling */}
+      <div className="block md:hidden">
+        <MobileScrollytelling />
+      </div>
+
+      {/* Desktop: original side-by-side sticky layout */}
+      <section className="hidden md:block relative z-20 bg-[#F9FAFB] rounded-t-[5rem] -mt-24 pt-32 pb-20 px-6 overflow-hidden">
+        <div className="max-w-7xl mx-auto flex flex-row relative">
+          {/* Phone Column — pinned right on desktop */}
+          <div className="order-2 w-1/2 sticky top-24 h-screen z-10 flex items-center justify-center self-start">
+            <div className="w-full max-w-[320px] h-[650px] mx-auto bg-[#F4EFEA] rounded-[2.5rem] border-[10px] border-white shadow-2xl relative overflow-hidden flex flex-col">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={active}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                  className="absolute inset-0"
+                >
+                  {renderInterface()}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+
+          {/* Steps Column — left on desktop */}
+          <div className="order-1 w-1/2 pt-[30vh] pb-[40vh] flex flex-col gap-[50vh]">
+            {STEPS.map((s, i) => (
+              <StepBlock
+                key={i}
+                index={i}
+                icon={s.icon}
+                title={s.title}
+                description={s.description}
+                onActive={setActive}
+              />
+            ))}
           </div>
         </div>
-
-        {/* Steps Column — left on desktop */}
-        <div className="order-1 w-1/2 pt-[30vh] pb-[40vh] flex flex-col gap-[50vh]">
-          {STEPS.map((s, i) => (
-            <StepBlock
-              key={i}
-              index={i}
-              icon={s.icon}
-              title={s.title}
-              description={s.description}
-              onActive={setActive}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
