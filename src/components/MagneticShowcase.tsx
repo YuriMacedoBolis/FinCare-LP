@@ -536,6 +536,20 @@ const MagneticShowcase = () => {
             </AnimatePresence>
           </div>
         </div>
+
+        {/* Steps Column — second on mobile, left on desktop */}
+        <div className="order-2 md:order-1 w-full md:w-1/2 pt-[5vh] md:pt-[30vh] pb-[20vh] md:pb-[40vh] flex flex-col gap-[20vh] md:gap-[50vh]">
+          {STEPS.map((s, i) => (
+            <StepBlock
+              key={i}
+              index={i}
+              icon={s.icon}
+              title={s.title}
+              description={s.description}
+              onActive={setActive}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
