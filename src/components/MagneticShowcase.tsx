@@ -397,7 +397,7 @@ const Interface3 = () => {
   );
 };
 
-/* ---------------- Interface 4: Chat ---------------- */
+/* ---------------- Interface 4: Chat (Entrada Natural) ---------------- */
 
 const Interface4 = () => (
   <PhoneShell bg="bg-[#F4EFEA]">
@@ -436,6 +436,68 @@ const Interface4 = () => (
       <div className="flex justify-end">
         <div className="bg-[#FF6400] text-white text-[10px] px-3 py-2 rounded-2xl rounded-tr-sm max-w-[80%] font-medium">
           recebi dinheiro do meu freelance, 700 reais
+        </div>
+      </div>
+    </div>
+    <div className="px-3 pb-4 pt-2 flex items-center gap-2">
+      <div className="flex-1 bg-white rounded-full px-3 py-2 text-[10px] text-slate-400 shadow-sm">
+        Digite sua mensagem...
+      </div>
+      <div className="w-8 h-8 rounded-lg bg-[#FF6400] flex items-center justify-center shadow">
+        <Send className="w-3.5 h-3.5 text-white" />
+      </div>
+    </div>
+  </PhoneShell>
+);
+
+/* ---------------- Interface 5: Leitura de Faturas (Chat com imagem) ---------------- */
+
+const Interface5 = () => (
+  <PhoneShell bg="bg-[#F4EFEA]">
+    <div className="px-5 pt-6 pb-3 flex items-center justify-between border-b border-black/5">
+      <div className="flex items-center gap-2">
+        <ArrowLeft className="w-4 h-4 text-[#064E3B]" />
+        <div>
+          <p className="text-sm font-extrabold text-[#064E3B]">Assistente FinCare Brasil</p>
+          <p className="text-[10px] text-slate-500">Online</p>
+        </div>
+      </div>
+      <Trash2 className="w-4 h-4 text-[#064E3B]" />
+    </div>
+    <div className="flex-1 overflow-hidden px-3 py-3 space-y-2">
+      <div className="flex">
+        <div className="bg-white text-[10px] text-slate-700 px-3 py-2 rounded-2xl rounded-tl-sm max-w-[80%] shadow-sm">
+          Pode me enviar a foto da fatura para registrar tudo de uma vez.
+        </div>
+      </div>
+      <div className="flex justify-end">
+        <div className="bg-[#FF6400] p-1.5 rounded-2xl rounded-tr-sm shadow-sm max-w-[70%]">
+          <div className="bg-white rounded-xl p-2 w-[140px]">
+            <div className="flex items-center gap-1.5 mb-1.5">
+              <FileText className="w-3 h-3 text-[#FF6400]" />
+              <p className="text-[9px] font-bold text-[#064E3B]">Fatura Cartão</p>
+            </div>
+            <div className="space-y-1">
+              <div className="h-1 bg-slate-200 rounded w-full" />
+              <div className="h-1 bg-slate-200 rounded w-5/6" />
+              <div className="h-1 bg-slate-200 rounded w-4/6" />
+              <div className="h-1 bg-slate-200 rounded w-full" />
+              <div className="h-1 bg-slate-200 rounded w-3/6" />
+            </div>
+            <div className="mt-1.5 pt-1.5 border-t border-slate-100 flex justify-between">
+              <span className="text-[8px] text-slate-500">Total</span>
+              <span className="text-[8px] font-bold text-[#FF6400]">R$ 1.247,80</span>
+            </div>
+          </div>
+          <p className="text-[9px] text-white/90 px-1 pt-1">fatura_abril.jpg</p>
+        </div>
+      </div>
+      <div className="flex">
+        <div className="bg-white text-[10px] text-slate-700 px-3 py-2 rounded-2xl rounded-tl-sm max-w-[85%] shadow-sm leading-relaxed">
+          <p className="font-semibold mb-1">Fatura processada! ✨</p>
+          <p>📄 12 transações identificadas</p>
+          <p>💰 Total: R$ 1.247,80</p>
+          <p>🏷️ Categorizadas automaticamente</p>
         </div>
       </div>
     </div>
