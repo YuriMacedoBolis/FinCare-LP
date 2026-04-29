@@ -62,7 +62,7 @@ const FeatureBridge: React.FC = () => {
   return (
     <section
       id="como-funciona"
-      className="bg-[#FF6400] py-32 px-6 flex justify-center overflow-hidden scroll-mt-24"
+      className="bg-[#FF6400] py-20 md:py-32 px-6 flex justify-center overflow-hidden scroll-mt-24"
       style={{ perspective: "1200px" }}
     >
       <div className="w-full max-w-5xl flex flex-col items-center">
@@ -73,23 +73,23 @@ const FeatureBridge: React.FC = () => {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-center"
         >
-          <h2 className="text-white text-5xl md:text-6xl font-extrabold tracking-tight font-sans leading-[1.05]">
+          <h2 className="text-white text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight font-sans leading-[1.05]">
             Deixe o trabalho pesado com a IA.
           </h2>
           <h2
-            className="text-6xl md:text-7xl font-bold italic font-playfair-italic leading-[1.05] mt-2"
+            className="text-5xl sm:text-6xl md:text-7xl font-bold italic font-playfair-italic leading-[1.05] mt-2"
             style={{ color: "#064E3B" }}
           >
             Foque nos seus sonhos.
           </h2>
-          <p className="text-white/90 max-w-2xl mx-auto mt-6 text-lg">
+          <p className="text-white/90 max-w-2xl mx-auto mt-6 text-base md:text-lg">
             A FinCare Brasil elimina a fricção da organização financeira para
             que tenha tempo e clareza para construir o seu patrimônio.
           </p>
         </motion.div>
 
         <div
-          className="grid md:grid-cols-2 gap-10 mt-20 max-w-5xl w-full"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 mt-12 md:mt-20 max-w-5xl w-full"
           style={{ perspective: "1200px" }}
         >
           <TiltCard delay={0.15}>
