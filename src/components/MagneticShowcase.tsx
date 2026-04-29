@@ -41,16 +41,18 @@ const StepBlock = ({ index, icon, title, description, onActive }: StepProps) => 
   return (
     <motion.div
       ref={ref}
+      data-feature-id={`feature${index + 1}`}
+      data-scroll-detect
       initial={{ opacity: 0.3 }}
       animate={{ opacity: inView ? 1 : 0.3 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="font-[Inter]"
+      className="font-[Inter] text-left"
     >
-      <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-6">
+      <div className="w-14 h-14 md:w-16 md:h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-4 md:mb-6">
         {icon}
       </div>
-      <h3 className="text-4xl font-extrabold text-[#064E3B]">{title}</h3>
-      <p className="text-slate-600 text-lg mt-4 max-w-md leading-relaxed">{description}</p>
+      <h3 className="text-3xl md:text-4xl font-extrabold text-[#064E3B]">{title}</h3>
+      <p className="text-slate-600 text-base md:text-lg mt-3 md:mt-4 max-w-md leading-relaxed">{description}</p>
     </motion.div>
   );
 };
@@ -519,9 +521,9 @@ const MagneticShowcase = () => {
   return (
     <section className="relative z-20 bg-[#F9FAFB] rounded-t-[3rem] md:rounded-t-[5rem] -mt-12 md:-mt-24 pt-24 md:pt-32 pb-20 px-6 md:px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row relative">
-        {/* Phone Column — first on mobile, right on desktop */}
-        <div className="order-1 md:order-2 w-full md:w-1/2 relative md:sticky md:top-0 md:h-screen flex items-center justify-center mb-10 md:mb-0">
-          <div className="w-full max-w-[300px] md:max-w-[320px] h-[600px] md:h-[650px] mx-auto bg-[#F4EFEA] rounded-[2.5rem] border-[10px] border-white shadow-2xl relative overflow-hidden flex flex-col">
+        {/* Phone Column — pinned on mobile (top) and desktop (right) */}
+        <div className="order-1 md:order-2 w-full md:w-1/2 sticky top-20 md:top-0 md:h-screen z-10 flex items-center justify-center mb-8 md:mb-0 self-start">
+          <div className="w-full max-w-[230px] md:max-w-[320px] h-[460px] md:h-[650px] mx-auto bg-[#F4EFEA] rounded-[2rem] md:rounded-[2.5rem] border-[8px] md:border-[10px] border-white shadow-2xl relative overflow-hidden flex flex-col">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
@@ -538,7 +540,7 @@ const MagneticShowcase = () => {
         </div>
 
         {/* Steps Column — second on mobile, left on desktop */}
-        <div className="order-2 md:order-1 w-full md:w-1/2 pt-[5vh] md:pt-[30vh] pb-[20vh] md:pb-[40vh] flex flex-col gap-[20vh] md:gap-[50vh]">
+        <div className="order-2 md:order-1 w-full md:w-1/2 pt-[10vh] md:pt-[30vh] pb-[30vh] md:pb-[40vh] flex flex-col gap-[35vh] md:gap-[50vh]">
           {STEPS.map((s, i) => (
             <StepBlock
               key={i}

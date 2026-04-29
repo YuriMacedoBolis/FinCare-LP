@@ -51,7 +51,7 @@ const TiltCard: React.FC<TiltCardProps> = ({ children, delay = 0 }) => {
         rotateY,
         transformStyle: "preserve-3d",
       }}
-      className="bg-white rounded-3xl p-10 md:p-12 shadow-2xl relative will-change-transform"
+      className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl relative will-change-transform"
     >
       <div style={{ transform: "translateZ(30px)" }}>{children}</div>
     </motion.div>
@@ -62,7 +62,7 @@ const FeatureBridge: React.FC = () => {
   return (
     <section
       id="como-funciona"
-      className="bg-[#FF6400] py-32 px-6 flex justify-center overflow-hidden scroll-mt-24"
+      className="bg-[#FF6400] py-20 md:py-32 px-6 flex justify-center overflow-hidden scroll-mt-24"
       style={{ perspective: "1200px" }}
     >
       <div className="w-full max-w-5xl flex flex-col items-center">
@@ -73,27 +73,27 @@ const FeatureBridge: React.FC = () => {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-center"
         >
-          <h2 className="text-white text-5xl md:text-6xl font-extrabold tracking-tight font-sans leading-[1.05]">
+          <h2 className="text-white text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight font-sans leading-[1.05]">
             Deixe o trabalho pesado com a IA.
           </h2>
           <h2
-            className="text-6xl md:text-7xl font-bold italic font-playfair-italic leading-[1.05] mt-2"
+            className="text-5xl sm:text-6xl md:text-7xl font-bold italic font-playfair-italic leading-[1.05] mt-2"
             style={{ color: "#064E3B" }}
           >
             Foque nos seus sonhos.
           </h2>
-          <p className="text-white/90 max-w-2xl mx-auto mt-6 text-lg">
+          <p className="text-white/90 max-w-2xl mx-auto mt-6 text-base md:text-lg">
             A FinCare Brasil elimina a fricção da organização financeira para
             que tenha tempo e clareza para construir o seu patrimônio.
           </p>
         </motion.div>
 
         <div
-          className="grid md:grid-cols-2 gap-10 mt-20 max-w-5xl w-full"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 mt-12 md:mt-20 max-w-5xl w-full"
           style={{ perspective: "1200px" }}
         >
           <TiltCard delay={0.15}>
-            <div className="w-16 h-16 rounded-2xl bg-[#fff7ed] text-[#FF6400] flex items-center justify-center mb-8">
+            <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-[#fff7ed] text-[#FF6400] flex items-center justify-center mb-6 md:mb-8">
               <svg
                 width="32"
                 height="32"
@@ -114,17 +114,17 @@ const FeatureBridge: React.FC = () => {
                 ></path>
               </svg>
             </div>
-            <h3 className="text-2xl font-extrabold text-slate-900 mb-4">
+            <h3 className="text-xl md:text-2xl font-extrabold text-slate-900 mb-3 md:mb-4">
               Chega de planilhas.
             </h3>
-            <p className="text-slate-600 leading-relaxed">
+            <p className="text-slate-600 text-sm md:text-base leading-relaxed">
               Você não é o contador da sua própria vida. A nossa Inteligência
               Artificial lê, categoriza e organiza cada centavo automaticamente.
             </p>
           </TiltCard>
 
           <TiltCard delay={0.3}>
-            <div className="w-16 h-16 rounded-2xl bg-[#ecfdf5] text-[#064E3B] flex items-center justify-center mb-8">
+            <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-[#ecfdf5] text-[#064E3B] flex items-center justify-center mb-6 md:mb-8">
               <svg
                 width="32"
                 height="32"
@@ -141,10 +141,10 @@ const FeatureBridge: React.FC = () => {
                 <path d="M22 2l-8 8" stroke="#064E3B" strokeWidth="2"></path>
               </svg>
             </div>
-            <h3 className="text-2xl font-extrabold text-slate-900 mb-4">
+            <h3 className="text-xl md:text-2xl font-extrabold text-slate-900 mb-3 md:mb-4">
               A evolução do cofrinho.
             </h3>
-            <p className="text-slate-600 leading-relaxed">
+            <p className="text-slate-600 text-sm md:text-base leading-relaxed">
               Dinheiro poupado sem propósito perde valor. Defina metas
               inteligentes — desde uma viagem de fim de ano até a sua reserva
               de emergência.
