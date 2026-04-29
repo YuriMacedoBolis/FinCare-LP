@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { motion, useInView, AnimatePresence, useScroll } from "framer-motion";
 import {
   Wallet,
   TrendingUp,
