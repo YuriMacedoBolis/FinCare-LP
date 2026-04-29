@@ -499,10 +499,125 @@ const STEPS = [
   },
 ];
 
+/* ---------------- Mobile Pinned Scrollytelling ---------------- */
+
+const MOBILE_FEATURES = [
+  {
+    title: "Visão 360º do seu dinheiro",
+    description:
+      "Acompanhe saldo, receitas e despesas em tempo real, com gráficos claros direto no seu bolso.",
+    interfaceIndex: 0,
+  },
+  {
+    title: "Análise Inteligente",
+    description:
+      "Descubra suas Categorias Vilãs e entenda exatamente para onde o seu dinheiro está indo todo mês.",
+    interfaceIndex: 1,
+  },
+  {
+    title: "Converse com sua IA",
+    description:
+      "Esqueça formulários. Mande uma mensagem como 'paguei 350 no celular' e pronto: tudo organizado.",
+    interfaceIndex: 3,
+  },
+];
+
+const MobileScrollytelling = () => {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const { scrollYProgress } = useScroll({
+    target: wrapperRef,
+    offset: ["start start", "end end"],
+  });
+
+  useEffect(() => {
+    const unsubscribe = scrollYProgress.on("change", (p) => {
+      // Divide [0,1] into 3 equal segments
+      const idx = Math.min(MOBILE_FEATURES.length - 1, Math.floor(p * MOBILE_FEATURES.length));
+      setActiveIndex(idx);
+    });
+    return () => unsubscribe();
+  }, [scrollYProgress]);
+
+  const current = MOBILE_FEATURES[activeIndex];
+
+  const renderInterface = (i: number) => {
+    switch (i) {
+      case 0:
+        return <Interface1 />;
+      case 1:
+        return <Interface2 />;
+      case 2:
+        return <Interface3 />;
+      case 3:
+        return <Interface4 />;
+      default:
+        return <Interface1 />;
+    }
+  };
+
+  return (
+    <section ref={wrapperRef} className="relative w-full h-[300vh] bg-[#F9FAFB]">
+      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-start overflow-hidden px-6 pt-6 pb-8">
+        {/* Phone */}
+        <div className="w-[240px] h-[460px] bg-[#F4EFEA] rounded-[2rem] border-[8px] border-white shadow-2xl relative overflow-hidden flex flex-col shrink-0">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current.interfaceIndex}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="absolute inset-0"
+            >
+              {renderInterface(current.interfaceIndex)}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Fixed-height text container — prevents layout jump */}
+        <div className="h-40 mt-6 w-full max-w-md flex items-start justify-center">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeIndex}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.3 }}
+              className="text-center"
+            >
+              <h3 className="text-xl font-extrabold text-[#064E3B] leading-tight">
+                {current.title}
+              </h3>
+              <p className="text-slate-600 text-sm mt-2 leading-relaxed">
+                {current.description}
+              </p>
+
+              {/* Progress dots */}
+              <div className="flex items-center justify-center gap-2 mt-4">
+                {MOBILE_FEATURES.map((_, i) => (
+                  <span
+                    key={i}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      i === activeIndex ? "w-6 bg-[#FF6400]" : "w-1.5 bg-slate-300"
+                    }`}
+                  />
+                ))}
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 /* ---------------- Main ---------------- */
 
 const MagneticShowcase = () => {
   const [active, setActive] = useState(0);
+  const isMobile = useIsMobile();
 
   const renderInterface = () => {
     switch (active) {
@@ -519,12 +634,16 @@ const MagneticShowcase = () => {
     }
   };
 
+  if (isMobile) {
+    return <MobileScrollytelling />;
+  }
+
   return (
     <section className="relative z-20 bg-[#F9FAFB] rounded-t-[3rem] md:rounded-t-[5rem] -mt-12 md:-mt-24 pt-24 md:pt-32 pb-20 px-6 md:px-6 overflow-hidden">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row relative">
-        {/* Phone Column — pinned on mobile (top) and desktop (right) */}
-        <div className="order-1 md:order-2 w-full md:w-1/2 sticky top-20 md:top-0 md:h-screen z-10 flex items-center justify-center mb-8 md:mb-0 self-start">
-          <div className="w-full max-w-[230px] md:max-w-[320px] h-[460px] md:h-[650px] mx-auto bg-[#F4EFEA] rounded-[2rem] md:rounded-[2.5rem] border-[8px] md:border-[10px] border-white shadow-2xl relative overflow-hidden flex flex-col">
+      <div className="max-w-7xl mx-auto flex flex-row relative">
+        {/* Phone Column — pinned right on desktop */}
+        <div className="order-2 w-1/2 sticky top-0 h-screen z-10 flex items-center justify-center self-start">
+          <div className="w-full max-w-[320px] h-[650px] mx-auto bg-[#F4EFEA] rounded-[2.5rem] border-[10px] border-white shadow-2xl relative overflow-hidden flex flex-col">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
@@ -540,8 +659,8 @@ const MagneticShowcase = () => {
           </div>
         </div>
 
-        {/* Steps Column — second on mobile, left on desktop */}
-        <div className="order-2 md:order-1 w-full md:w-1/2 pt-[10vh] md:pt-[30vh] pb-[30vh] md:pb-[40vh] flex flex-col gap-[35vh] md:gap-[50vh]">
+        {/* Steps Column — left on desktop */}
+        <div className="order-1 w-1/2 pt-[30vh] pb-[40vh] flex flex-col gap-[50vh]">
           {STEPS.map((s, i) => (
             <StepBlock
               key={i}
