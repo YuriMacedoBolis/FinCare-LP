@@ -162,21 +162,21 @@ const ScrollExpandMedia = ({
                   }}
                 >
                   {/* Left column */}
-                  <div className="flex-1 flex flex-col gap-3 md:gap-5 text-left max-w-xl">
-                    <h2 className="text-xl md:text-4xl lg:text-5xl font-bold text-[#0B192C] leading-tight">
+                  <div className="flex-1 flex flex-col gap-2 md:gap-5 text-left max-w-xl px-2 md:px-0">
+                    <h2 className="text-lg md:text-4xl lg:text-5xl font-bold text-[#0B192C] leading-tight">
                       Bem-vindo à Nova Era.
                     </h2>
-                    <p className="text-sm md:text-lg text-slate-600 leading-relaxed">
+                    <p className="text-xs md:text-lg text-slate-600 leading-relaxed">
                       A FinCare Brasil uniu a segurança do cofrinho clássico com
                       o poder da Inteligência Artificial. Registre gastos, crie
                       metas e converse com seu assistente financeiro 24/7.
                     </p>
-                    <p className="text-sm md:text-lg font-bold text-[#FF6400]">
+                    <p className="text-xs md:text-lg font-bold text-[#FF6400]">
                       Garanta uma das 50 vagas de Membro Fundador por apenas R$ 9,90.
                     </p>
                     <button
                       type="button"
-                      className="self-start mt-1 md:mt-2 inline-flex items-center justify-center bg-[#FF6400] hover:bg-[#e55a00] text-white font-semibold px-5 py-3 md:px-8 md:py-4 rounded-xl text-sm md:text-base shadow-lg shadow-orange-500/30 transition-all duration-300 hover:scale-[1.02]"
+                      className="self-start mt-1 md:mt-2 inline-flex items-center justify-center bg-[#FF6400] hover:bg-[#e55a00] text-white font-semibold px-4 py-2.5 md:px-8 md:py-4 rounded-xl text-xs md:text-base shadow-lg shadow-orange-500/30 transition-all duration-300 hover:scale-[1.02]"
                     >
                       Garantir Minha Vaga
                     </button>
@@ -187,7 +187,7 @@ const ScrollExpandMedia = ({
                     <img
                       src="/porquinho_fincare.webp"
                       alt="Porquinho FinCare com óculos"
-                      className="object-contain w-full max-h-[140px] md:max-h-[400px] lg:max-h-[500px] drop-shadow-2xl"
+                      className="object-contain w-full max-h-[110px] md:max-h-[400px] lg:max-h-[500px] drop-shadow-2xl"
                     />
                   </div>
                 </motion.div>
