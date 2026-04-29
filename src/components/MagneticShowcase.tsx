@@ -725,7 +725,7 @@ const MagneticShowcase = () => {
                 icon={s.icon}
                 title={s.title}
                 description={s.description}
-                onActive={setActive}
+                onActive={() => setActive(s.interfaceIndex)}
               />
             ))}
           </div>
