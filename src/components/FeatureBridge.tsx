@@ -51,7 +51,7 @@ const TiltCard: React.FC<TiltCardProps> = ({ children, delay = 0 }) => {
         rotateY,
         transformStyle: "preserve-3d",
       }}
-      className="bg-white rounded-3xl p-10 md:p-12 shadow-2xl relative will-change-transform"
+      className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl relative will-change-transform"
     >
       <div style={{ transform: "translateZ(30px)" }}>{children}</div>
     </motion.div>
@@ -93,7 +93,7 @@ const FeatureBridge: React.FC = () => {
           style={{ perspective: "1200px" }}
         >
           <TiltCard delay={0.15}>
-            <div className="w-16 h-16 rounded-2xl bg-[#fff7ed] text-[#FF6400] flex items-center justify-center mb-8">
+            <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-[#fff7ed] text-[#FF6400] flex items-center justify-center mb-6 md:mb-8">
               <svg
                 width="32"
                 height="32"
@@ -114,17 +114,17 @@ const FeatureBridge: React.FC = () => {
                 ></path>
               </svg>
             </div>
-            <h3 className="text-2xl font-extrabold text-slate-900 mb-4">
+            <h3 className="text-xl md:text-2xl font-extrabold text-slate-900 mb-3 md:mb-4">
               Chega de planilhas.
             </h3>
-            <p className="text-slate-600 leading-relaxed">
+            <p className="text-slate-600 text-sm md:text-base leading-relaxed">
               Você não é o contador da sua própria vida. A nossa Inteligência
               Artificial lê, categoriza e organiza cada centavo automaticamente.
             </p>
           </TiltCard>
 
           <TiltCard delay={0.3}>
-            <div className="w-16 h-16 rounded-2xl bg-[#ecfdf5] text-[#064E3B] flex items-center justify-center mb-8">
+            <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-[#ecfdf5] text-[#064E3B] flex items-center justify-center mb-6 md:mb-8">
               <svg
                 width="32"
                 height="32"
@@ -141,10 +141,10 @@ const FeatureBridge: React.FC = () => {
                 <path d="M22 2l-8 8" stroke="#064E3B" strokeWidth="2"></path>
               </svg>
             </div>
-            <h3 className="text-2xl font-extrabold text-slate-900 mb-4">
+            <h3 className="text-xl md:text-2xl font-extrabold text-slate-900 mb-3 md:mb-4">
               A evolução do cofrinho.
             </h3>
-            <p className="text-slate-600 leading-relaxed">
+            <p className="text-slate-600 text-sm md:text-base leading-relaxed">
               Dinheiro poupado sem propósito perde valor. Defina metas
               inteligentes — desde uma viagem de fim de ano até a sua reserva
               de emergência.
