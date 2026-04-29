@@ -49,12 +49,12 @@ const TiltCard: React.FC<CardData> = ({ title, description, icon }) => {
         transformStyle: "preserve-3d",
         backgroundColor: "#064E3B",
       }}
-      className="w-full h-[480px] rounded-[2rem] p-10 border border-white/10 shadow-2xl flex flex-col justify-center will-change-transform"
+      className="w-full h-[420px] md:h-[480px] rounded-[2rem] p-7 md:p-10 border border-white/10 shadow-2xl flex flex-col justify-center will-change-transform"
     >
       <motion.div style={{ transform: "translateZ(40px)" }}>
         <div className="mb-6">{icon}</div>
-        <h3 className="text-2xl font-extrabold text-white mb-4">{title}</h3>
-        <p className="text-[#a7f3d0] leading-relaxed text-lg">{description}</p>
+        <h3 className="text-xl md:text-2xl font-extrabold text-white mb-3 md:mb-4">{title}</h3>
+        <p className="text-[#a7f3d0] leading-relaxed text-base md:text-lg">{description}</p>
       </motion.div>
     </motion.div>
   );
@@ -207,7 +207,7 @@ const TechCarousel: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="text-white text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05]"
+          className="text-white text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.05]"
         >
           A inteligência por trás
         </motion.h2>
@@ -216,7 +216,7 @@ const TechCarousel: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="text-5xl md:text-6xl font-bold italic font-serif leading-[1.05] mt-2"
+          className="text-4xl md:text-6xl font-bold italic font-serif leading-[1.05] mt-2"
           style={{ color: "#064E3B" }}
         >
           do seu controle.
