@@ -516,9 +516,21 @@ const Interface5 = () => (
 
 const STEPS = [
   {
-    title: "Visão 360º",
+    title: "Entrada Natural",
     description:
-      "Tenha clareza absoluta sobre o seu dinheiro. Acompanhe o seu saldo, receitas e despesas com gráficos dinâmicos em tempo real.",
+      "Esqueça os formulários complexos. Registe os seus gastos enviando uma simples mensagem para o seu assistente inteligente.",
+    interfaceIndex: 3,
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF6400" strokeWidth="2">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Análise Inteligente",
+    description:
+      "Tenha clareza absoluta sobre o seu dinheiro. Acompanhe saldo, receitas e despesas com gráficos dinâmicos em tempo real.",
+    interfaceIndex: 0,
     icon: (
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF6400" strokeWidth="2">
         <path d="M21.21 15.89A10 10 0 1 1 8 2.83" />
@@ -527,19 +539,10 @@ const STEPS = [
     ),
   },
   {
-    title: "Análise Inteligente",
-    description:
-      "Descubra para onde o seu dinheiro está indo. A nossa inteligência identifica as Categorias Vilãs que mais consomem o seu orçamento.",
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF6400" strokeWidth="2">
-        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-      </svg>
-    ),
-  },
-  {
     title: "Metas de Vida",
     description:
-      "Transforme sonhos em planos concretos. Crie metas financeiras, como uma viagem ou um carro novo, e acompanhe o seu progresso.",
+      "Transforme sonhos em planos concretos. Crie metas financeiras e acompanhe o seu progresso com a Evolução Financeira, o Comparativo Mensal e as Categorias Vilãs.",
+    interfaceIndex: 1,
     icon: (
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF6400" strokeWidth="2">
         <circle cx="12" cy="12" r="10" />
@@ -549,12 +552,14 @@ const STEPS = [
     ),
   },
   {
-    title: "O seu Assistente Pessoal",
+    title: "Leitura de Faturas",
     description:
-      "Esqueça os formulários complexos. Registe os seus gastos enviando uma simples mensagem para o seu assistente inteligente.",
+      "Envie a foto da sua fatura e deixe a IA categorizar, extrair os valores e organizar tudo automaticamente em segundos.",
+    interfaceIndex: 4,
     icon: (
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF6400" strokeWidth="2">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+        <polyline points="14 2 14 8 20 8" />
       </svg>
     ),
   },
@@ -562,26 +567,11 @@ const STEPS = [
 
 /* ---------------- Mobile Pinned Scrollytelling ---------------- */
 
-const MOBILE_FEATURES = [
-  {
-    title: "Visão 360º do seu dinheiro",
-    description:
-      "Acompanhe saldo, receitas e despesas em tempo real, com gráficos claros direto no seu bolso.",
-    interfaceIndex: 0,
-  },
-  {
-    title: "Análise Inteligente",
-    description:
-      "Descubra suas Categorias Vilãs e entenda exatamente para onde o seu dinheiro está indo todo mês.",
-    interfaceIndex: 1,
-  },
-  {
-    title: "Converse com sua IA",
-    description:
-      "Esqueça formulários. Mande uma mensagem como 'paguei 350 no celular' e pronto: tudo organizado.",
-    interfaceIndex: 3,
-  },
-];
+const MOBILE_FEATURES = STEPS.map((s) => ({
+  title: s.title,
+  description: s.description,
+  interfaceIndex: s.interfaceIndex,
+}));
 
 const MobileScrollytelling = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
