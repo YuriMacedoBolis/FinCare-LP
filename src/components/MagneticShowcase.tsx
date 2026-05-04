@@ -592,6 +592,7 @@ const MOBILE_FEATURES = [
       "Esqueça formulários. Mande uma mensagem como 'paguei 350 no celular' e pronto: tudo organizado.",
     interfaceIndex: 3,
   },
+];
 
 const MobileScrollytelling = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
