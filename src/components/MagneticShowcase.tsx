@@ -640,7 +640,7 @@ const MagneticShowcase = () => {
       </div>
 
       {/* Desktop: side-by-side sticky scroll layout */}
-      <section className="hidden md:block relative z-20 bg-[#F9FAFB] rounded-t-[5rem] -mt-24 pt-32 pb-20 overflow-hidden">
+      <section className="hidden md:block relative z-20 bg-[#F9FAFB] rounded-t-[5rem] -mt-24 pt-32 pb-20">
         <div className="max-w-7xl mx-auto flex flex-row gap-16 py-24 px-6">
           {/* Left Column — scrolling text blocks */}
           <div className="w-1/2 flex flex-col gap-32 py-[20vh]">
