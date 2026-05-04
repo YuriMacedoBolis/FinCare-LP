@@ -153,7 +153,7 @@ const ScrollExpandMedia = ({
               >
                 {/* Expanded content (2-column layout) — driven by wowProgress (0.35 -> 0.45) */}
                 <motion.div
-                  className="absolute inset-0 flex flex-col md:flex-row items-center justify-start md:justify-center gap-4 md:gap-8 p-4 md:p-12 lg:p-16 overflow-y-auto"
+                  className="absolute inset-0 flex flex-col md:flex-row items-center justify-start md:justify-center gap-4 md:gap-8 p-4 md:p-12 lg:p-16 overflow-hidden"
                   style={{
                     opacity: wowProgress,
                     transform: `translateY(${(1 - wowProgress) * 50}px)`,
