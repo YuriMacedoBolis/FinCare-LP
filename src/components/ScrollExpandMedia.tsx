@@ -184,11 +184,11 @@ const ScrollExpandMedia = ({
                   </div>
 
                   {/* Right column */}
-                  <div className="flex-none md:flex-1 w-full flex items-center justify-center min-h-0">
+                  <div className="flex-none md:flex-1 w-full min-w-0 flex items-center justify-center min-h-0 overflow-hidden pb-2 md:pb-0">
                     <img
                       src="/porquinho_fincare.webp"
                       alt="Porquinho FinCare com óculos"
-                      className="object-contain w-[90%] max-w-[320px] md:w-full md:max-w-none max-h-[260px] md:max-h-[400px] lg:max-h-[500px] drop-shadow-2xl"
+                      className="object-contain w-full max-w-[240px] md:max-w-none md:w-full max-h-[220px] md:max-h-[400px] lg:max-h-[500px] drop-shadow-2xl"
                     />
                   </div>
                 </motion.div>
