@@ -153,7 +153,7 @@ const ScrollExpandMedia = ({
               >
                 {/* Expanded content (2-column layout) — driven by wowProgress (0.35 -> 0.45) */}
                 <motion.div
-                  className="absolute inset-0 flex flex-col md:flex-row items-center justify-center gap-3 md:gap-8 p-4 md:p-12 lg:p-16 overflow-y-auto"
+                  className="absolute inset-0 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 p-4 md:p-12 lg:p-16 overflow-y-auto"
                   style={{
                     opacity: wowProgress,
                     transform: `translateY(${(1 - wowProgress) * 50}px)`,
@@ -162,7 +162,7 @@ const ScrollExpandMedia = ({
                   }}
                 >
                   {/* Left column */}
-                  <div className="flex-1 flex flex-col gap-2 md:gap-5 text-left max-w-xl px-2 md:px-0">
+                  <div className="flex-1 flex flex-col items-center md:items-start gap-2 md:gap-5 text-center md:text-left max-w-xl px-2 md:px-0">
                     <h2 className="text-lg md:text-4xl lg:text-5xl font-bold text-[#0B192C] leading-tight">
                       Bem-vindo à Nova Era.
                     </h2>
@@ -177,7 +177,7 @@ const ScrollExpandMedia = ({
                     <button
                       type="button"
                       onClick={() => document.getElementById("precos")?.scrollIntoView({ behavior: "smooth" })}
-                      className="self-start mt-1 md:mt-2 inline-flex items-center justify-center bg-[#FF6400] hover:bg-[#e55a00] text-white font-semibold px-4 py-2.5 md:px-8 md:py-4 rounded-xl text-xs md:text-base shadow-lg shadow-orange-500/30 transition-all duration-300 hover:scale-[1.02]"
+                      className="mt-1 md:mt-2 md:self-start inline-flex items-center justify-center bg-[#FF6400] hover:bg-[#e55a00] text-white font-semibold px-4 py-2.5 md:px-8 md:py-4 rounded-xl text-xs md:text-base shadow-lg shadow-orange-500/30 transition-all duration-300 hover:scale-[1.02]"
                     >
                       Garantir Minha Vaga
                     </button>
@@ -188,7 +188,7 @@ const ScrollExpandMedia = ({
                     <img
                       src="/porquinho_fincare.webp"
                       alt="Porquinho FinCare com óculos"
-                      className="object-contain w-full max-h-[110px] md:max-h-[400px] lg:max-h-[500px] drop-shadow-2xl"
+                      className="object-contain w-4/5 max-w-[280px] md:w-full md:max-w-none max-h-[220px] md:max-h-[400px] lg:max-h-[500px] drop-shadow-2xl"
                     />
                   </div>
                 </motion.div>
