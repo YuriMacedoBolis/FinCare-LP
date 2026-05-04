@@ -32,7 +32,7 @@ type StepProps = {
 
 const StepBlock = ({ index, icon, title, description, onActive }: StepProps) => {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { margin: "-45% 0px -45% 0px" });
+  const inView = useInView(ref, { margin: "-50% 0px -50% 0px" });
 
   useEffect(() => {
     if (inView) onActive(index);
