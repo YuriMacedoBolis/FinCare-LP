@@ -176,6 +176,7 @@ const ScrollExpandMedia = ({
                     </p>
                     <button
                       type="button"
+                      onClick={() => document.getElementById("precos")?.scrollIntoView({ behavior: "smooth" })}
                       className="self-start mt-1 md:mt-2 inline-flex items-center justify-center bg-[#FF6400] hover:bg-[#e55a00] text-white font-semibold px-4 py-2.5 md:px-8 md:py-4 rounded-xl text-xs md:text-base shadow-lg shadow-orange-500/30 transition-all duration-300 hover:scale-[1.02]"
                     >
                       Garantir Minha Vaga
