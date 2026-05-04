@@ -581,12 +581,17 @@ const MOBILE_FEATURES = [
     interfaceIndex: 1,
   },
   {
+    title: "Metas de Vida",
+    description:
+      "Transforme sonhos em planos concretos. Crie metas financeiras, como uma viagem ou um carro novo, e acompanhe o seu progresso.",
+    interfaceIndex: 4,
+  },
+  {
     title: "Converse com sua IA",
     description:
       "Esqueça formulários. Mande uma mensagem como 'paguei 350 no celular' e pronto: tudo organizado.",
     interfaceIndex: 3,
   },
-];
 
 const MobileScrollytelling = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
