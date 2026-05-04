@@ -624,6 +624,8 @@ const MobileScrollytelling = () => {
         return <Interface3 />;
       case 3:
         return <Interface4 />;
+      case 4:
+        return <Interface5 />;
       default:
         return <Interface1 />;
     }
