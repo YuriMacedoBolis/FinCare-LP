@@ -397,6 +397,73 @@ const Interface3 = () => {
   );
 };
 
+/* ---------------- Interface 5: Metas (mobile reference) ---------------- */
+
+const Interface5 = () => {
+  const tx = [
+    { t: "Viagem Paris", d: "04/05", v: "-R$ 300,00", in: false },
+    { t: "Reserva de Emergência", d: "04/05", v: "-R$ 450,00", in: false },
+    { t: "Depósito para emergências", d: "04/05", v: "+R$ 450,00", in: true },
+    { t: "Parcela do carro", d: "04/05", v: "-R$ 250,00", in: false },
+    { t: "Recebimento freelance", d: "04/05", v: "+R$ 1.500,00", in: true },
+  ];
+  const goals = [
+    { t: "Carro", v: "R$ 250,00 / R$ 450,00", p: 56 },
+    { t: "Reserva de Emergência", v: "R$ 450,00 / R$ 500,00", p: 90 },
+    { t: "Viagem", v: "R$ 300,00 / R$ 800,00", p: 38 },
+  ];
+  return (
+    <PhoneShell bg="bg-white">
+      <PhoneHeader name="Conta" />
+      <div className="flex-1 overflow-hidden px-3 space-y-3 pb-24">
+        <div className="bg-white rounded-2xl p-3 shadow-sm border border-slate-100">
+          <div className="flex justify-between items-center mb-2">
+            <p className="text-[13px] font-bold text-[#064E3B]">Últimas Transações</p>
+            <span className="text-[9px] bg-slate-100 text-slate-600 rounded-full px-2 py-0.5">Ver Tudo</span>
+          </div>
+          {tx.map((t, i) => (
+            <div key={i} className="flex items-center gap-2 py-1">
+              <div className={`w-6 h-6 rounded-full flex items-center justify-center ${t.in ? "bg-emerald-100" : "bg-orange-100"}`}>
+                {t.in ? <ArrowDownLeft className="w-3 h-3 text-emerald-600" /> : <ArrowUpRight className="w-3 h-3 text-[#FF6400]" />}
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-[10px] font-semibold text-slate-800 leading-tight truncate">{t.t}</p>
+                <p className="text-[8px] text-slate-400">{t.d}</p>
+              </div>
+              <span className={`text-[10px] font-bold ${t.in ? "text-emerald-600" : "text-[#FF6400]"}`}>{t.v}</span>
+              <Pencil className="w-2.5 h-2.5 text-slate-400" />
+              <Trash2 className="w-2.5 h-2.5 text-rose-400" />
+            </div>
+          ))}
+        </div>
+
+        <div className="bg-white rounded-2xl p-3 shadow-sm border border-slate-100">
+          <div className="flex justify-between items-center mb-2">
+            <p className="text-[13px] font-bold text-[#064E3B]">Minhas Metas</p>
+            <span className="text-[10px] text-[#FF6400] font-semibold">+ Nova Meta</span>
+          </div>
+          {goals.map((g, i) => (
+            <div key={i} className="py-1.5">
+              <div className="flex justify-between items-center text-[10px]">
+                <span className="font-semibold text-slate-800">{g.t}</span>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-slate-500">{g.v}</span>
+                  <Pencil className="w-2.5 h-2.5 text-slate-400" />
+                  <Trash2 className="w-2.5 h-2.5 text-rose-400" />
+                </div>
+              </div>
+              <div className="h-1 mt-1 bg-slate-100 rounded-full overflow-hidden">
+                <div className="h-full bg-[#FF6400]" style={{ width: `${g.p}%` }} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <PhoneNav active="relatorio" />
+    </PhoneShell>
+  );
+};
+
 /* ---------------- Interface 4: Chat ---------------- */
 
 const Interface4 = () => (
