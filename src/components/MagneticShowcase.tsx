@@ -635,7 +635,7 @@ const MobileScrollytelling = () => {
     <section ref={wrapperRef} className="relative w-full h-[400vh] bg-[#F9FAFB]">
       <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-start overflow-hidden px-6 pt-6 pb-8">
         {/* Phone */}
-        <div className="w-[240px] h-[460px] bg-[#F4EFEA] rounded-[2rem] border-[8px] border-white shadow-2xl relative overflow-hidden flex flex-col shrink-0">
+        <div className="w-[240px] h-[460px] bg-[#F4EFEA] rounded-[2rem] border-[8px] border-white shadow-2xl relative overflow-hidden flex flex-col shrink-0 my-[50px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={current.interfaceIndex}
