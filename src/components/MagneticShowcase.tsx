@@ -639,39 +639,44 @@ const MagneticShowcase = () => {
         <MobileScrollytelling />
       </div>
 
-      {/* Desktop: original side-by-side sticky layout */}
-      <section className="hidden md:block relative z-20 bg-[#F9FAFB] rounded-t-[5rem] -mt-24 pt-32 pb-20 px-6 overflow-hidden">
-        <div className="max-w-7xl mx-auto flex flex-row relative">
-          {/* Phone Column — pinned right on desktop */}
-          <div className="order-2 w-1/2 sticky top-24 h-screen z-10 flex items-center justify-center self-start">
-            <div className="w-full max-w-[320px] h-[650px] mx-auto bg-[#F4EFEA] rounded-[2.5rem] border-[10px] border-white shadow-2xl relative overflow-hidden flex flex-col">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={active}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.35, ease: "easeOut" }}
-                  className="absolute inset-0"
-                >
-                  {renderInterface()}
-                </motion.div>
-              </AnimatePresence>
-            </div>
+      {/* Desktop: side-by-side sticky scroll layout */}
+      <section className="hidden md:block relative z-20 bg-[#F9FAFB] rounded-t-[5rem] -mt-24 pt-32 pb-20 overflow-hidden">
+        <div className="max-w-7xl mx-auto flex flex-row gap-16 py-24 px-6">
+          {/* Left Column — scrolling text blocks */}
+          <div className="w-1/2 flex flex-col gap-32 py-[20vh]">
+            {STEPS.map((s, i) => (
+              <div key={i} className="h-[50vh] flex flex-col justify-center">
+                <StepBlock
+                  index={i}
+                  icon={s.icon}
+                  title={s.title}
+                  description={s.description}
+                  onActive={setActive}
+                />
+              </div>
+            ))}
           </div>
 
-          {/* Steps Column — left on desktop */}
-          <div className="order-1 w-1/2 pt-[30vh] pb-[40vh] flex flex-col gap-[50vh]">
-            {STEPS.map((s, i) => (
-              <StepBlock
-                key={i}
-                index={i}
-                icon={s.icon}
-                title={s.title}
-                description={s.description}
-                onActive={setActive}
-              />
-            ))}
+          {/* Right Column — sticky iPhone mockup */}
+          <div className="w-1/2 relative">
+            <div className="sticky top-24 h-[80vh] flex items-center justify-center">
+              <div className="w-[320px] h-[640px] bg-gray-900 rounded-[3rem] p-2 border-[8px] border-gray-800 shadow-2xl relative">
+                <div className="bg-white h-full w-full rounded-[2.5rem] overflow-hidden relative">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={active}
+                      initial={{ opacity: 0, y: 12 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -12 }}
+                      transition={{ duration: 0.35, ease: "easeOut" }}
+                      className="absolute inset-0"
+                    >
+                      {renderInterface()}
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
