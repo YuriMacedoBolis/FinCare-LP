@@ -172,7 +172,7 @@ const ScrollExpandMedia = ({
                       metas e converse com seu assistente financeiro 24/7.
                     </p>
                     <p className="text-sm md:text-lg font-bold text-[#FF6400]">
-                      Garanta uma das 50 vagas de Membro Fundador por apenas R$ 9,90.
+                      Garanta uma das 50 vagas de Membro Fundador Totalmente Grátis.
                     </p>
                     <button
                       type="button"
