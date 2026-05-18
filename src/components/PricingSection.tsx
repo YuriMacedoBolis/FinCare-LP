@@ -193,6 +193,32 @@ export default function PricingSection() {
               </button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-md bg-white rounded-[32px] border-0 p-8 sm:p-10 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.3)] font-sans">
+              {success ? (
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 22 }}
+                  className="flex flex-col items-center text-center py-4"
+                >
+                  <div className="w-16 h-16 rounded-full bg-[#FF6400]/10 flex items-center justify-center mb-5">
+                    <MailCheck className="w-8 h-8 text-[#FF6400]" />
+                  </div>
+                  <DialogHeader className="space-y-2">
+                    <DialogTitle className="text-2xl font-bold text-slate-900 tracking-tight text-center">
+                      Confirme seu e-mail
+                    </DialogTitle>
+                    <DialogDescription className="text-base text-slate-500 leading-relaxed text-center">
+                      Enviamos um e-mail de confirmação para <strong className="text-slate-700">{email}</strong>. Acesse sua caixa de entrada (e o spam) para ativar sua conta.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <Button
+                    onClick={() => setOpen(false)}
+                    className="mt-8 w-full h-14 rounded-2xl bg-[#FF6400] hover:bg-[#e65a00] text-white font-semibold text-base"
+                  >
+                    Entendi
+                  </Button>
+                </motion.div>
+              ) : (
               <motion.div
                 variants={modalContainerVariants}
                 initial="hidden"
