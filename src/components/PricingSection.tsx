@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, type Variants } from "framer-motion";
-import { Check, Shield, Lock } from "lucide-react";
+import { Check, Shield, Lock, MailCheck } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -43,6 +43,7 @@ export default function PricingSection() {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value.replace(/\D/g, "");
@@ -109,7 +110,8 @@ export default function PricingSection() {
       }
     }
 
-    window.location.href = "https://fincare-ai.lovable.app";
+    setSuccess(true);
+    setSubmitting(false);
   };
 
   const modalContainerVariants: Variants = {
@@ -183,7 +185,7 @@ export default function PricingSection() {
             ))}
           </ul>
 
-          <Dialog open={open} onOpenChange={setOpen}>
+          <Dialog open={open} onOpenChange={(o) => { setOpen(o); if (!o) setSuccess(false); }}>
             <DialogTrigger asChild>
               <button className="bg-[#FF6400] hover:bg-[#e65a00] text-white w-full py-5 rounded-xl font-semibold text-lg transition-all duration-300 relative overflow-hidden group mt-4">
                 <span className="relative z-10">Garantir minha vaga agora</span>
@@ -191,6 +193,32 @@ export default function PricingSection() {
               </button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-md bg-white rounded-[32px] border-0 p-8 sm:p-10 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.3)] font-sans">
+              {success ? (
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 22 }}
+                  className="flex flex-col items-center text-center py-4"
+                >
+                  <div className="w-16 h-16 rounded-full bg-[#FF6400]/10 flex items-center justify-center mb-5">
+                    <MailCheck className="w-8 h-8 text-[#FF6400]" />
+                  </div>
+                  <DialogHeader className="space-y-2">
+                    <DialogTitle className="text-2xl font-bold text-slate-900 tracking-tight text-center">
+                      Confirme seu e-mail
+                    </DialogTitle>
+                    <DialogDescription className="text-base text-slate-500 leading-relaxed text-center">
+                      Enviamos um e-mail de confirmação para <strong className="text-slate-700">{email}</strong>. Acesse sua caixa de entrada (e o spam) para ativar sua conta.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <Button
+                    onClick={() => setOpen(false)}
+                    className="mt-8 w-full h-14 rounded-2xl bg-[#FF6400] hover:bg-[#e65a00] text-white font-semibold text-base"
+                  >
+                    Entendi
+                  </Button>
+                </motion.div>
+              ) : (
               <motion.div
                 variants={modalContainerVariants}
                 initial="hidden"
@@ -288,6 +316,7 @@ export default function PricingSection() {
                   </motion.div>
                 </form>
               </motion.div>
+              )}
             </DialogContent>
           </Dialog>
         </motion.div>
