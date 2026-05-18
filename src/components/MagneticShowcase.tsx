@@ -659,7 +659,7 @@ const MobileScrollytelling = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.3 }}
-              className="text-center"
+              className="text-center mt-[50px]"
             >
               <h3 className="text-xl font-extrabold text-[#064E3B] leading-tight">
                 {current.title}
