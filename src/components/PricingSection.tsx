@@ -168,16 +168,12 @@ export default function PricingSection() {
             FinCare Starter
           </p>
           <p className="text-slate-400 line-through text-base mb-1">De R$ 14,90 por</p>
-          <div className="flex items-end gap-1">
-            <span className="text-2xl font-medium text-slate-900">R$</span>
-            <span className="text-7xl font-light tracking-tight text-slate-900 leading-none">
-              9,90
+          <div className="flex items-end gap-2">
+            <span className="text-6xl font-light tracking-tight text-slate-900 leading-none">
+              Grátis
             </span>
-            <span className="text-slate-500 font-normal pb-2">/mês</span>
+            <span className="text-slate-500 font-normal pb-2">/vitalício</span>
           </div>
-          <p className="text-slate-600 text-sm mt-6">
-            O valor de um café para organizar a sua vida.
-          </p>
 
           <div className="h-px w-full bg-slate-200 my-8" />
 
