@@ -275,7 +275,7 @@ export default function PricingSection() {
                       disabled={submitting}
                       className="w-full h-16 rounded-2xl bg-[#FF6400] hover:bg-[#e65a00] text-white font-semibold text-base tracking-tight shadow-[0_10px_25px_-5px_rgba(255,100,0,0.4)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_15px_30px_-5px_rgba(255,100,0,0.5)] disabled:opacity-70 disabled:cursor-not-allowed"
                     >
-                      {submitting ? "Processando..." : "Ir para Pagamento Seguro"}
+                      {submitting ? "Processando..." : "Criar minha Conta"}
                     </Button>
                   </motion.div>
 
