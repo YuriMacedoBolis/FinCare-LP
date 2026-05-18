@@ -185,7 +185,7 @@ export default function PricingSection() {
             ))}
           </ul>
 
-          <Dialog open={open} onOpenChange={setOpen}>
+          <Dialog open={open} onOpenChange={(o) => { setOpen(o); if (!o) setSuccess(false); }}>
             <DialogTrigger asChild>
               <button className="bg-[#FF6400] hover:bg-[#e65a00] text-white w-full py-5 rounded-xl font-semibold text-lg transition-all duration-300 relative overflow-hidden group mt-4">
                 <span className="relative z-10">Garantir minha vaga agora</span>
