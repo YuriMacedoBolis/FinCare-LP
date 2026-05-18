@@ -316,6 +316,7 @@ export default function PricingSection() {
                   </motion.div>
                 </form>
               </motion.div>
+              )}
             </DialogContent>
           </Dialog>
         </motion.div>
