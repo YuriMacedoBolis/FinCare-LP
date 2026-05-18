@@ -65,7 +65,6 @@ export default function PricingSection() {
     const cleanName = name.trim();
     const cleanPhone = phone.replace(/\D/g, "");
 
-    // 1) Cria a conta no auth do Supabase externo
     const { data: signUpData, error: signUpError } = await externalSupabase.auth.signUp({
       email: cleanEmail,
       password,
@@ -90,8 +89,6 @@ export default function PricingSection() {
 
     const userId = signUpData.user?.id;
 
-    // 2) Atualiza/garante a row em profiles (a row pode ser criada por trigger no signup;
-    //    upsert garante que os campos do formulário fiquem preenchidos)
     if (userId) {
       const { error: profileError } = await externalSupabase
         .from("profiles")
@@ -108,14 +105,11 @@ export default function PricingSection() {
 
       if (profileError) {
         console.error("Erro ao salvar profile:", profileError);
-        // Não bloqueia o checkout — usuário já foi criado no auth
         toast.warning("Conta criada, mas houve um problema ao salvar dados extras.");
       }
     }
 
-    // 3) Redireciona para o Mercado Pago
-    window.location.href =
-      "https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=f5569c713e1c4b61b80c5a7fecb0833f";
+    window.location.href = "https://fincare-ai.lovable.app";
   };
 
   const modalContainerVariants: Variants = {
