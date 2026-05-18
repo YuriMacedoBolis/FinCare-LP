@@ -110,7 +110,8 @@ export default function PricingSection() {
       }
     }
 
-    window.location.href = "https://fincare-ai.lovable.app";
+    setSuccess(true);
+    setSubmitting(false);
   };
 
   const modalContainerVariants: Variants = {
