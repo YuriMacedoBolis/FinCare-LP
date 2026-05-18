@@ -65,7 +65,6 @@ export default function PricingSection() {
     const cleanName = name.trim();
     const cleanPhone = phone.replace(/\D/g, "");
 
-    // 1) Cria a conta no auth do Supabase externo
     const { data: signUpData, error: signUpError } = await externalSupabase.auth.signUp({
       email: cleanEmail,
       password,
@@ -90,8 +89,6 @@ export default function PricingSection() {
 
     const userId = signUpData.user?.id;
 
-    // 2) Atualiza/garante a row em profiles (a row pode ser criada por trigger no signup;
-    //    upsert garante que os campos do formulário fiquem preenchidos)
     if (userId) {
       const { error: profileError } = await externalSupabase
         .from("profiles")
@@ -108,14 +105,11 @@ export default function PricingSection() {
 
       if (profileError) {
         console.error("Erro ao salvar profile:", profileError);
-        // Não bloqueia o checkout — usuário já foi criado no auth
         toast.warning("Conta criada, mas houve um problema ao salvar dados extras.");
       }
     }
 
-    // 3) Redireciona para o Mercado Pago
-    window.location.href =
-      "https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=f5569c713e1c4b61b80c5a7fecb0833f";
+    window.location.href = "https://fincare-ai.lovable.app";
   };
 
   const modalContainerVariants: Variants = {
@@ -168,16 +162,12 @@ export default function PricingSection() {
             FinCare Starter
           </p>
           <p className="text-slate-400 line-through text-base mb-1">De R$ 14,90 por</p>
-          <div className="flex items-end gap-1">
-            <span className="text-2xl font-medium text-slate-900">R$</span>
-            <span className="text-7xl font-light tracking-tight text-slate-900 leading-none">
-              9,90
+          <div className="flex items-end gap-2">
+            <span className="text-6xl font-light tracking-tight text-slate-900 leading-none">
+              Grátis
             </span>
-            <span className="text-slate-500 font-normal pb-2">/mês</span>
+            <span className="text-slate-500 font-normal pb-2">/vitalício</span>
           </div>
-          <p className="text-slate-600 text-sm mt-6">
-            O valor de um café para organizar a sua vida.
-          </p>
 
           <div className="h-px w-full bg-slate-200 my-8" />
 
@@ -285,7 +275,7 @@ export default function PricingSection() {
                       disabled={submitting}
                       className="w-full h-16 rounded-2xl bg-[#FF6400] hover:bg-[#e65a00] text-white font-semibold text-base tracking-tight shadow-[0_10px_25px_-5px_rgba(255,100,0,0.4)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_15px_30px_-5px_rgba(255,100,0,0.5)] disabled:opacity-70 disabled:cursor-not-allowed"
                     >
-                      {submitting ? "Processando..." : "Ir para Pagamento Seguro"}
+                      {submitting ? "Processando..." : "Criar minha Conta"}
                     </Button>
                   </motion.div>
 
