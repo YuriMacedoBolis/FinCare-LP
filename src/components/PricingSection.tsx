@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, type Variants } from "framer-motion";
-import { Check, Shield, Lock } from "lucide-react";
+import { Check, Shield, Lock, MailCheck } from "lucide-react";
 import {
   Dialog,
   DialogContent,
