@@ -104,7 +104,6 @@ export default function PricingSection() {
         );
 
       if (profileError) {
-        console.error("Erro ao salvar profile:", profileError);
         toast.warning("Conta criada, mas houve um problema ao salvar dados extras.");
       }
     }
