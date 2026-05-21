@@ -79,7 +79,6 @@ export default function PricingSection() {
     });
 
     if (signUpError) {
-      console.error("Erro no signup:", signUpError);
       const msg = signUpError.message?.toLowerCase().includes("already")
         ? "Este e-mail já está cadastrado. Faça login para continuar."
         : "Não foi possível criar sua conta. Tente novamente.";
@@ -105,7 +104,6 @@ export default function PricingSection() {
         );
 
       if (profileError) {
-        console.error("Erro ao salvar profile:", profileError);
         toast.warning("Conta criada, mas houve um problema ao salvar dados extras.");
       }
     }

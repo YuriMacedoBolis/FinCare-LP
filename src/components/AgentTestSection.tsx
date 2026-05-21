@@ -61,8 +61,8 @@ export default function AgentTestSection() {
       }
 
       setMessages((prev) => [...prev, { role: 'ai', text: aiText }]);
-    } catch (error) {
-      console.error('Webhook Error:', error);
+    } catch {
+      // Erro silencioso — exibimos mensagem amigável ao usuário abaixo.
       setMessages((prev) => [
         ...prev,
         {
