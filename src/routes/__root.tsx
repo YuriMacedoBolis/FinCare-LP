@@ -29,14 +29,18 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "FinCare Brasil" },
+      { name: "description", content: "FinCare LP is a dynamic hero section that expands on scroll, revealing financial tools and AI assistance." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "FinCare Brasil" },
+      { property: "og:description", content: "FinCare LP is a dynamic hero section that expands on scroll, revealing financial tools and AI assistance." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "FinCare Brasil" },
+      { name: "twitter:description", content: "FinCare LP is a dynamic hero section that expands on scroll, revealing financial tools and AI assistance." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7b1e3185-9b54-4d95-bd5f-85955805c12a/id-preview-41174502--be3f5714-943d-45cd-852d-f908df92b596.lovable.app-1779729645083.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7b1e3185-9b54-4d95-bd5f-85955805c12a/id-preview-41174502--be3f5714-943d-45cd-852d-f908df92b596.lovable.app-1779729645083.png" },
     ],
     links: [
       {
