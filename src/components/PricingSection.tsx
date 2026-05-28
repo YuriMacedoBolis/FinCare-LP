@@ -70,7 +70,7 @@ export default function PricingSection() {
       email: cleanEmail,
       password,
       options: {
-        emailRedirectTo: `${window.location.origin}/`,
+        emailRedirectTo: "https://app.fincarebrasil.com.br/dashboard",
         data: {
           full_name: cleanName,
           phone: cleanPhone,
