@@ -3,11 +3,11 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
 
-// @ts-expect-error - swiper css side-effect imports lack type declarations
+// @ts-ignore - swiper css side-effect imports lack type declarations
 import "swiper/css";
-// @ts-expect-error - swiper css side-effect imports lack type declarations
+// @ts-ignore - swiper css side-effect imports lack type declarations
 import "swiper/css/effect-coverflow";
-// @ts-expect-error - swiper css side-effect imports lack type declarations
+// @ts-ignore - swiper css side-effect imports lack type declarations
 import "swiper/css/pagination";
 
 interface CardData {
